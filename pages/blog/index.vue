@@ -12,5 +12,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <CommonHero title="Blog" subtitle="前端工程師 & 職涯諮詢師" />
+  <CommonHero noIntro title="Blog" subtitle="前端工程師 & 職涯諮詢師" />
 </template>
