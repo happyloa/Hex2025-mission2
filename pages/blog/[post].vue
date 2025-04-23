@@ -1,1 +1,1 @@
-<template>單篇部落格文章</template>
+<template>單篇部落格文章 {{ $route.params.post }}</template>
