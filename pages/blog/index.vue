@@ -11,4 +11,6 @@ useSeoMeta({
 });
 </script>
 
-<template>部落格頁面</template>
+<template>
+  <CommonHero title="Blog" subtitle="前端工程師 & 職涯諮詢師" />
+</template>
