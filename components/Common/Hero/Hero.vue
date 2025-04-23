@@ -34,7 +34,7 @@ defineProps({
     <div
       class="flex flex-1 flex-col justify-center gap-3 bg-[url('/mobile/home/hero-deco.webp')] bg-cover px-6 pb-[200px] pt-6 text-blue md:bg-[url('/desktop/home/hero-deco.webp')] lg:px-20 lg:py-0"
     >
-      <h1 class="text-head-1-sm lg:text-head-1">{{ title }}</h1>
+      <h1 class="text-head-1-sm xl:text-head-1">{{ title }}</h1>
       <p class="text-fs-3">{{ subtitle }}</p>
     </div>
   </section>
