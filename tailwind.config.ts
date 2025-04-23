@@ -12,6 +12,34 @@ export default <Partial<Config>>{
         blue: "#0027D5",
       },
       fontSize: {
+        "head-1": [
+          "7.5rem",
+          {
+            fontWeight: "900",
+            lineHeight: "1.5",
+          },
+        ],
+        "head-1-sm": [
+          "3.25rem",
+          {
+            fontWeight: "900",
+            lineHeight: "1.5",
+          },
+        ],
+        "head-2": [
+          "4rem",
+          {
+            fontWeight: "700",
+            lineHeight: "1.5",
+          },
+        ],
+        "head-2-sm": [
+          "3rem",
+          {
+            fontWeight: "700",
+            lineHeight: "1.5",
+          },
+        ],
         "fs-3": [
           "1.75rem",
           {
