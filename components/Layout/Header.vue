@@ -1,7 +1,7 @@
 <template>
-  <header class="py-6 bg-bgc sticky top-0">
+  <header class="sticky top-0 bg-bgc py-6">
     <nav>
-      <ul class="text-fs-3 flex flex-wrap gap-x-10 gap-y-2 justify-center">
+      <ul class="flex flex-wrap justify-center gap-x-10 gap-y-2 text-fs-3">
         <li><NuxtLink to="/">首頁</NuxtLink></li>
         <li><NuxtLink to="/blog">部落格</NuxtLink></li>
       </ul>
