@@ -13,6 +13,7 @@ export const collections = {
       mobileCover: z.string(),
       slug: z.string(),
       tags: z.array(z.string()),
+      isPopular: z.boolean(),
     }),
   }),
 };
