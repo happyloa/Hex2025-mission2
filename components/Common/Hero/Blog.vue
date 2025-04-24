@@ -60,9 +60,9 @@ const latestPost = computed(() => latestArray.value?.[0] ?? null);
           最新文章
         </li>
       </ul>
-      <h3 class="mb-2 text-fs-3-bold lg:whitespace-nowrap">
+      <h2 class="mb-2 text-fs-3-bold lg:whitespace-nowrap">
         {{ latestPost.title }}
-      </h3>
+      </h2>
       <p class="line-clamp | mb-4 max-w-[636px] text-fs-6">
         {{ latestPost.description }}
       </p>
