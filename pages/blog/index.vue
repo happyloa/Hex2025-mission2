@@ -111,7 +111,7 @@ const displayPosts = filteredPosts;
               </p>
               <button
                 type="button"
-                class="rounded-full border border-black px-4 py-2 text-fs-6 text-content transition hover:bg-content hover:text-white"
+                class="rounded-full border border-black px-4 py-2 text-fs-6 text-content transition group-hover:bg-content group-hover:text-white"
               >
                 閱讀內文
               </button>
