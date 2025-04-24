@@ -65,7 +65,7 @@ useSeoMeta({
         <figure>
           <picture>
             <source
-              media="(max-width: 1024px)"
+              media="(max-width: 768px)"
               srcset="/mobile/home/consultation.webp"
             />
             <img
@@ -77,11 +77,11 @@ useSeoMeta({
         </figure>
       </div>
       <div
-        class="right-0 top-1/2 flex max-w-[745px] flex-col gap-3 bg-bgc lg:absolute lg:h-[568px] lg:-translate-y-1/2"
+        class="right-0 top-1/2 flex max-w-[745px] flex-col gap-3 bg-bgc md:absolute md:h-[568px] md:-translate-y-1/2"
       >
         <!-- 介紹卡片1 -->
         <article
-          class="right-[219px] top-0 bg-white px-6 py-10 lg:absolute lg:w-[526px] lg:px-10 lg:py-20"
+          class="right-[219px] top-0 bg-white px-6 py-10 md:absolute md:w-[526px] md:px-10 md:py-20"
         >
           <img src="/icon/dash.png" alt="裝飾線條" class="mb-6" />
           <p class="text-fs-6-bold">
@@ -93,7 +93,7 @@ useSeoMeta({
         </article>
         <!-- 介紹卡片2 -->
         <article
-          class="bottom-0 right-0 bg-[#F5F5F5] px-6 py-10 lg:absolute lg:w-[526px] lg:px-10 lg:py-20"
+          class="bottom-0 right-0 bg-[#F5F5F5] px-6 py-10 md:absolute md:w-[526px] md:px-10 md:py-20"
         >
           <img src="/icon/dash.png" alt="裝飾線條" class="mb-6" />
           <p class="text-fs-6-bold mb-6">
@@ -182,5 +182,86 @@ useSeoMeta({
   </section>
   <LayoutContainer>
     <h2 class="text-head-2-sm md:text-head-2 mb-6">與我聯繫</h2>
+    <ul class="text-fs-4">
+      <li>
+        <a
+          href="mailto:alysewang@hexschool.com"
+          class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-black pb-4"
+        >
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span class="lg:text-fs-2 break-all underline"
+              >alysewang@hexschool.com</span
+            >
+            <span class="lg:text-fs-3">合作洽談</span>
+          </div>
+          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          target="_blank"
+          class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-black py-4"
+        >
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <img src="/icon/youtube.webp" alt="youtube icon" />
+            <span class="lg:text-fs-3">Youtube 職涯諮詢室</span>
+          </div>
+          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          target="_blank"
+          class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-black py-4"
+        >
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <img src="/icon/podcast.webp" alt="podcast icon" />
+            <span class="lg:text-fs-3">podcast 職涯諮詢室</span>
+          </div>
+          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          target="_blank"
+          class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-black py-4"
+        >
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <img src="/icon/facebook.webp" alt="facebook icon" />
+            <span class="lg:text-fs-3">Facebook 前端社群</span>
+          </div>
+          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          target="_blank"
+          class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-black py-4"
+        >
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <img src="/icon/linkedin.webp" alt="linkedin icon" />
+            <span class="lg:text-fs-3">linkedin 職涯交流</span>
+          </div>
+          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" />
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          target="_blank"
+          class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-black py-4"
+        >
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <img src="/icon/instagram.webp" alt="instagram icon" />
+            <span class="lg:text-fs-3">Instagram 日常分享</span>
+          </div>
+          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" />
+        </a>
+      </li>
+    </ul>
   </LayoutContainer>
 </template>
