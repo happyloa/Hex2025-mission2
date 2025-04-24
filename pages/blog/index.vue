@@ -30,7 +30,7 @@ const { data: posts } = await useAsyncData("posts", () =>
 <template>
   <CommonHero noIntro title="BLOG" subtitle="前端工程師 & 職涯諮詢師" />
   <LayoutContainer>
-    <main>
+    <main class="mb-10">
       <ul
         class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-20"
       >
@@ -87,6 +87,7 @@ const { data: posts } = await useAsyncData("posts", () =>
       </ul>
     </main>
   </LayoutContainer>
+  <CommonSocialLinks />
 </template>
 
 <style scoped>
