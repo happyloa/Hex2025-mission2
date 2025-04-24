@@ -10,6 +10,7 @@ useSeoMeta({
   twitterCard: "/ogImage.webp",
 });
 
+// 從 Content API 讀出的所有文章
 const { data: posts } = await useAsyncData("posts", () =>
   queryCollection("blog")
     .select(
@@ -25,16 +26,44 @@ const { data: posts } = await useAsyncData("posts", () =>
     .order("date", "DESC")
     .all(),
 );
+
+// 搜尋關鍵字
+const searchTerm = ref("");
+
+// 計算篩選後的文章清單（大小寫不分）
+const filteredPosts = computed(() => {
+  const key = searchTerm.value.trim().toLowerCase();
+  if (!key) return posts.value || [];
+  return (posts.value || []).filter((post) =>
+    post.title.toLowerCase().includes(key),
+  );
+});
 </script>
 
 <template>
   <CommonHero noIntro title="BLOG" subtitle="前端工程師 & 職涯諮詢師" />
   <LayoutContainer>
+    <div class="relative mb-10">
+      <img
+        src="/icon/search.webp"
+        alt="搜尋"
+        class="absolute left-4 top-1/2 -translate-y-1/2"
+      />
+      <input
+        v-model="searchTerm"
+        type="text"
+        name="search"
+        id="search"
+        placeholder="搜尋你感興趣的文章"
+        class="rounded-full border border-content py-4 pl-[50px] pr-12 text-fs-6 text-content placeholder:text-content"
+      />
+    </div>
     <main class="mb-10">
       <ul
+        v-if="filteredPosts.length > 0"
         class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-20"
       >
-        <li v-for="post in posts" :key="post.slug">
+        <li v-for="post in filteredPosts" :key="post.slug">
           <NuxtLink :to="post.slug">
             <article class="group">
               <figure class="mb-4 overflow-hidden border border-bgc-dark">
@@ -85,6 +114,9 @@ const { data: posts } = await useAsyncData("posts", () =>
           </NuxtLink>
         </li>
       </ul>
+      <p v-else class="py-10 text-center text-fs-2 text-content">
+        沒有找到符合「{{ searchTerm }}」的文章，請試試其他關鍵字。
+      </p>
     </main>
   </LayoutContainer>
   <CommonSocialLinks />
