@@ -14,7 +14,7 @@ useSeoMeta({
 <template>
   <CommonHero title="Alyse Wang" subtitle="前端工程師 & 職涯諮詢師" />
   <section
-    class="border-secondary relative border-b bg-bgc px-3 pb-16 pt-[356px] md:pb-20 md:pt-[282px]"
+    class="border-secondary relative mx-auto max-w-[1920px] border-b bg-bgc px-3 pb-16 pt-[356px] md:pb-20 md:pt-[282px]"
   >
     <AtomIntro />
     <div class="mx-auto max-w-[1296px]">
@@ -134,7 +134,7 @@ useSeoMeta({
       />
     </div>
   </LayoutContainer>
-  <section class="flex flex-col xl:flex-row">
+  <section class="mx-auto flex max-w-[1920px] flex-col xl:flex-row">
     <figure>
       <picture>
         <source

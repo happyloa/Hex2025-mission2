@@ -22,7 +22,7 @@ defineProps({
 </script>
 
 <template>
-  <section class="flex flex-col lg:flex-row">
+  <section class="mx-auto flex max-w-[1920px] flex-col lg:flex-row">
     <figure>
       <picture>
         <source
