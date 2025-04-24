@@ -32,7 +32,7 @@ const { data: posts } = await useAsyncData("posts", () =>
   <LayoutContainer>
     <main>
       <ul
-        class="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-y-20"
+        class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-20"
       >
         <li v-for="post in posts" :key="post.slug">
           <NuxtLink :to="post.slug">
