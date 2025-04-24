@@ -46,7 +46,7 @@ useSeoMeta({
       <div
         class="flex flex-col items-end justify-end gap-2 lg:flex-row lg:items-center"
       >
-        <p class="text-center text-fs-3">聯繫我，取得更多資訊！</p>
+        <p class="text-fs-3-bold text-center">聯繫我，取得更多資訊！</p>
         <a href="#" target="_blank" class="transition-all hover:translate-x-1"
           ><img src="/icon/contact-me.webp" alt="聯繫我"
         /></a>
@@ -63,7 +63,79 @@ useSeoMeta({
       <h2 class="text-head-2-sm md:text-head-2 mb-6">
         職涯諮詢<br class="lg:hidden" />成功案例
       </h2>
-      <div></div>
+      <div class="relative mb-10">
+        <div class="max-w-[745px] bg-[#EDEDED] p-6">
+          <figure>
+            <picture>
+              <source
+                media="(max-width: 1024px)"
+                srcset="/mobile/home/consultation.webp"
+              />
+              <img
+                src="/desktop/home/consultation.webp"
+                alt="職涯諮詢成功案例圖片"
+                class="w-full"
+              />
+            </picture>
+          </figure>
+        </div>
+        <div
+          class="right-0 top-1/2 flex max-w-[745px] flex-col gap-3 bg-bgc lg:absolute lg:h-[568px] lg:-translate-y-1/2"
+        >
+          <!-- 介紹卡片1 -->
+          <article
+            class="right-[219px] top-0 bg-white px-6 py-10 lg:absolute lg:w-[526px] lg:px-10 lg:py-20"
+          >
+            <img src="/icon/dash.png" alt="裝飾線條" class="mb-6" />
+            <p class="text-fs-6-bold">
+              在職涯發展的關鍵轉折點上，適時的協助與正確的方向至關重要。藉由職涯諮詢，我可以幫助你加速釐清目標、建立更全面的技術與軟實力，並有效<span
+                class="text-blue"
+                >突破原有的舒適圈</span
+              >。
+            </p>
+          </article>
+          <!-- 介紹卡片2 -->
+          <article
+            class="bottom-0 right-0 bg-[#F5F5F5] px-6 py-10 lg:absolute lg:w-[526px] lg:px-10 lg:py-20"
+          >
+            <img src="/icon/dash.png" alt="裝飾線條" class="mb-6" />
+            <p class="text-fs-6-bold mb-6">
+              期待在下一個新機會中，我能與你一起攜手邁向更高峰！
+            </p>
+            <button
+              type="button"
+              class="text-fs-6-bold rounded-full border border-blue bg-white px-4 py-2 text-blue transition-all hover:bg-blue hover:text-white"
+            >
+              立即預約諮詢
+            </button>
+          </article>
+        </div>
+      </div>
+      <div class="grid gap-6 bg-[#F5F5F5] p-6 md:grid-cols-2 xl:grid-cols-4">
+        <CommonCustomerCard
+          image="avatar1"
+          title="無經驗到前端工程師 Offer"
+          :list="['打造前端專案與履歷亮點', '深度強化面試表現']"
+        />
+        <CommonCustomerCard
+          image="avatar2"
+          title="轉職迷茫到明確學習規劃"
+          :list="['制訂階段性目標與時間安排', '鼓勵參與前端社群或活動']"
+        />
+        <CommonCustomerCard
+          image="avatar3"
+          title="面試緊張到從容應對"
+          :list="[
+            '透過面試模擬找出常犯的邏輯漏洞',
+            '討論遇到不熟悉議題時的回應方式',
+          ]"
+        />
+        <CommonCustomerCard
+          image="avatar4"
+          title="面試緊張到從容應對"
+          :list="['擬定進階框架或技術研究目標', '培養跨團隊溝通與簡報能力']"
+        />
+      </div>
     </div>
   </section>
 </template>
