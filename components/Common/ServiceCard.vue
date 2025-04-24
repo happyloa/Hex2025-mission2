@@ -37,7 +37,11 @@ defineProps({
           media="(max-width: 1024px)"
           :srcset="`/mobile/home/${image}.webp`"
         />
-        <img :src="`/desktop/home/${image}.webp`" alt="圖片" class="w-full" />
+        <img
+          :src="`/desktop/home/${image}.webp`"
+          :alt="`${title}圖片`"
+          class="w-full"
+        />
       </picture>
     </figure>
     <div
