@@ -11,7 +11,7 @@ export const collections = {
       date: z.date(),
       desktopCover: z.string(),
       mobileCover: z.string(),
-      path: z.string(),
+      slug: z.string(),
       tags: z.array(z.string()),
     }),
   }),
