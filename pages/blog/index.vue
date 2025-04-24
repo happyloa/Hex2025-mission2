@@ -46,6 +46,7 @@ const displayPosts = filteredPosts;
 
 <template>
   <CommonHero noIntro title="BLOG" subtitle="前端工程師 & 職涯諮詢師" />
+  <CommonHeroBlog />
   <LayoutContainer>
     <div class="relative mb-10">
       <img
