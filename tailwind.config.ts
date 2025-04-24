@@ -83,6 +83,13 @@ export default <Partial<Config>>{
             lineHeight: "1.5",
           },
         ],
+        "fs-5-bold": [
+          "1.25rem",
+          {
+            fontWeight: "700",
+            lineHeight: "1.5",
+          },
+        ],
         "fs-6": [
           "1rem",
           {
