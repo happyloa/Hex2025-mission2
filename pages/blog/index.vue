@@ -32,12 +32,16 @@ const searchTerm = ref("");
 
 // 計算篩選後的文章清單（大小寫不分）
 const filteredPosts = computed(() => {
+  // 1. 排除最新一筆
+  const list = (posts.value ?? []).slice(1);
+  // 2. 如果沒有關鍵字，直接回傳剔除後列表
   const key = searchTerm.value.trim().toLowerCase();
-  if (!key) return posts.value || [];
-  return (posts.value || []).filter((post) =>
-    post.title.toLowerCase().includes(key),
-  );
+  if (!key) return list;
+  // 3. 有關鍵字時，再從這個 list 中過濾
+  return list.filter((post) => post.title.toLowerCase().includes(key));
 });
+
+const displayPosts = filteredPosts;
 </script>
 
 <template>
@@ -60,10 +64,10 @@ const filteredPosts = computed(() => {
     </div>
     <main class="mb-10">
       <ul
-        v-if="filteredPosts.length > 0"
+        v-if="displayPosts.length > 0"
         class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-20"
       >
-        <li v-for="post in filteredPosts" :key="post.slug">
+        <li v-for="post in displayPosts" :key="post.slug">
           <NuxtLink :to="post.slug">
             <article class="group">
               <figure class="mb-4 overflow-hidden border border-bgc-dark">
