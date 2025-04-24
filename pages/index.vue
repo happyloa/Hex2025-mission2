@@ -156,7 +156,7 @@ useSeoMeta({
       class="flex flex-1 items-center justify-center bg-[url('/mobile/home/newsletter-deco.webp')] bg-cover p-3 md:bg-[url('/desktop/home/newsletter-deco.webp')] lg:p-20"
     >
       <div class="flex-1 bg-white px-6 py-10 lg:p-20">
-        <h2 class="text-head-2-sm xl:text-head-2 mb-4">訂閱電子報</h2>
+        <h2 class="text-head-2-sm xl:text-head-2 mb-4 whitespace-nowrap">訂閱電子報</h2>
         <p class="text-fs-5 mb-6">
           立即訂閱，搶先掌握<span class="text-blue">前端 x 職涯</span
           >的獨家資訊！
