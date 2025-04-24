@@ -1,4 +1,15 @@
 <script setup>
+/**
+ * @typedef {Object} Props
+ * @property {Boolean} hidePreview - 隱藏摘要跟閱讀內文按鈕
+ */
+defineProps({
+  hidePreview: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 // 只拿最新一篇（date DESC），回傳 array，裡面只有一筆
 const { data: latestArray } = await useAsyncData("latestPost", () =>
   queryCollection("blog")
@@ -63,10 +74,14 @@ const latestPost = computed(() => latestArray.value?.[0] ?? null);
       <h2 class="mb-2 text-fs-3-bold lg:whitespace-nowrap">
         {{ latestPost.title }}
       </h2>
-      <p class="line-clamp | mb-4 text-fs-6 lg:max-w-[636px]">
+      <p
+        v-if="!hidePreview"
+        class="line-clamp | mb-4 text-fs-6 lg:max-w-[636px]"
+      >
         {{ latestPost.description }}
       </p>
       <button
+        v-if="!hidePreview"
         type="button"
         class="rounded-full border border-black px-4 py-2 text-fs-6 text-content transition group-hover:bg-content group-hover:text-white"
       >
