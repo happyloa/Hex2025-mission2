@@ -41,6 +41,13 @@ export default <Partial<Config>>{
             lineHeight: "1.5",
           },
         ],
+        "fs-2": [
+          "2rem",
+          {
+            fontWeight: "500",
+            lineHeight: "1.5",
+          },
+        ],
         "fs-3": [
           "1.75rem",
           {
@@ -52,6 +59,13 @@ export default <Partial<Config>>{
           "1.75rem",
           {
             fontWeight: "700",
+            lineHeight: "1.5",
+          },
+        ],
+        "fs-4": [
+          "1.5rem",
+          {
+            fontWeight: "500",
             lineHeight: "1.5",
           },
         ],
