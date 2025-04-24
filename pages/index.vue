@@ -149,7 +149,7 @@ useSeoMeta({
       </picture>
     </figure>
     <div
-      class="flex-1 content-center bg-[url('/mobile/home/newsletter-deco.webp')] bg-cover p-3 md:bg-[url('/desktop/home/newsletter-deco.webp')] lg:p-20"
+      class="flex-1 content-center bg-[url('/desktop/home/newsletter-deco.webp')] bg-cover p-3 lg:p-20"
     >
       <div class="flex-1 bg-white px-6 py-10 lg:p-20">
         <h2 class="text-head-2-sm xl:text-head-2 mb-4 whitespace-nowrap">
