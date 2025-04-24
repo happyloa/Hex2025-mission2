@@ -45,10 +45,10 @@ defineProps({
       </picture>
     </figure>
     <div
-      class="static top-0 w-full bg-white p-6 lg:absolute lg:max-w-[480px] lg:translate-y-1/2"
+      class="static top-1/2 w-full bg-white p-6 lg:absolute lg:max-w-[480px] lg:-translate-y-1/2"
       :class="reverse ? 'left-0' : 'right-0'"
     >
-      <hr class="w-[30px] rounded-full border-[2.5px] border-blue" />
+      <img src="/icon/dash.png" alt="裝飾線條" />
       <h3 class="mb-2 text-fs-3">{{ title }}</h3>
       <p class="text-fs-6 text-content">
         {{ description }}
