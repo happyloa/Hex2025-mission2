@@ -48,9 +48,14 @@ useSeoMeta({
       >
         <p class="text-center text-fs-3">聯繫我，取得更多資訊！</p>
         <a href="#" target="_blank" class="transition-all hover:translate-x-1"
-          ><img src="/icon/contact-me.webp"
+          ><img src="/icon/contact-me.webp" alt="聯繫我"
         /></a>
       </div>
+    </div>
+  </section>
+  <section class="border-secondary border bg-bgc px-3 py-16 md:py-20">
+    <div class="mx-auto max-w-[1296px]">
+      <h2 class="text-head-2-sm md:text-head-2 mb-6">部落格精選</h2>
     </div>
   </section>
 </template>
