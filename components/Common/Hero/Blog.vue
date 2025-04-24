@@ -63,7 +63,7 @@ const latestPost = computed(() => latestArray.value?.[0] ?? null);
       <h2 class="mb-2 text-fs-3-bold lg:whitespace-nowrap">
         {{ latestPost.title }}
       </h2>
-      <p class="line-clamp | mb-4 max-w-[636px] text-fs-6">
+      <p class="line-clamp | mb-4 text-fs-6 lg:max-w-[636px]">
         {{ latestPost.description }}
       </p>
       <button
