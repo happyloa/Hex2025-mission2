@@ -41,7 +41,7 @@ defineProps({
       :class="noIntro ? 'p-6' : 'px-6 pb-[200px] pt-6'"
     >
       <h1 class="text-head-1-sm xl:text-head-1">{{ title }}</h1>
-      <p class="text-fs-3">{{ subtitle }}</p>
+      <p class="text-fs-3-bold">{{ subtitle }}</p>
     </div>
   </section>
 </template>

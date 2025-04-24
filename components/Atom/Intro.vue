@@ -1,6 +1,6 @@
 <template>
   <div
-    class="text-fs-3-light absolute -top-40 right-0 mx-3 flex flex-col gap-4 bg-white px-6 py-10 lg:max-w-[1077px] lg:px-10 lg:py-20 xl:right-20"
+    class="text-fs-3 absolute -top-40 right-0 mx-3 flex flex-col gap-4 bg-white px-6 py-10 lg:max-w-[1077px] lg:px-10 lg:py-20 xl:right-20"
   >
     <p>嗨，我是 Alyse 一名深耕前端技術的工程師。</p>
     <p>
