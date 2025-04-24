@@ -118,6 +118,22 @@ const filteredPosts = computed(() => {
         沒有找到符合「{{ searchTerm }}」的文章，請試試其他關鍵字。
       </p>
     </main>
+    <nav class="mx-auto max-w-[328px] rounded-full bg-white px-5 py-4">
+      <ul class="flex justify-between text-center text-fs-6 text-content">
+        <li>
+          <img src="/icon/prev.webp" alt="上一頁" class="cursor-pointer" />
+        </li>
+        <li class="w-10 cursor-pointer">1</li>
+        <li class="w-10 cursor-pointer">2</li>
+        <li class="w-10 cursor-pointer">3</li>
+        <li class="w-10 cursor-pointer">4</li>
+        <li class="w-10 cursor-pointer">5</li>
+        <li class="w-10 cursor-pointer">...</li>
+        <li>
+          <img src="/icon/next.webp" alt="下一頁" class="cursor-pointer" />
+        </li>
+      </ul>
+    </nav>
   </LayoutContainer>
   <CommonSocialLinks />
 </template>
