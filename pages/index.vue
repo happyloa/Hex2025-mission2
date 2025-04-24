@@ -138,4 +138,48 @@ useSeoMeta({
       </div>
     </div>
   </section>
+  <section class="flex flex-col xl:flex-row">
+    <figure>
+      <picture>
+        <source
+          media="(max-width: 768px)"
+          srcset="/mobile/home/newsletter-image.webp"
+        />
+        <img
+          src="/desktop/home/newsletter-image.webp"
+          alt="訂閱電子報人物形象照"
+          class="w-full"
+        />
+      </picture>
+    </figure>
+    <div
+      class="flex flex-1 items-center justify-center bg-[url('/mobile/home/newsletter-deco.webp')] bg-cover p-3 md:bg-[url('/desktop/home/newsletter-deco.webp')] lg:p-20"
+    >
+      <div class="flex-1 bg-white px-6 py-10 lg:p-20">
+        <h2 class="text-head-2-sm xl:text-head-2 mb-4">訂閱電子報</h2>
+        <p class="text-fs-5 mb-6">
+          立即訂閱，搶先掌握<span class="text-blue">前端 x 職涯</span
+          >的獨家資訊！
+        </p>
+        <form class="text-fs-5 flex flex-col items-start text-content">
+          <input
+            type="text"
+            placeholder="請輸入您的大名"
+            class="mb-2 w-full bg-bgc-dark px-4 py-2 placeholder:text-content focus:outline-0"
+          />
+          <input
+            type="email"
+            placeholder="請輸入您的電子信箱"
+            class="mb-6 w-full bg-bgc-dark px-4 py-2 placeholder:text-content focus:outline-0"
+          />
+          <button
+            type="submit"
+            class="text-fs-6-bold rounded-full border border-blue bg-white px-4 py-2 text-blue transition-all hover:bg-blue hover:text-white"
+          >
+            啟動訂閱
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
 </template>
