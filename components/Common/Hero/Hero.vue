@@ -43,7 +43,9 @@ defineProps({
       <h1 class="mb-3 whitespace-nowrap text-head-1-sm xl:text-head-1">
         {{ title }}
       </h1>
-      <p class="break-keep text-fs-3-bold">{{ subtitle }}</p>
+      <p class="break-keep text-fs-3-bold lg:whitespace-nowrap">
+        {{ subtitle }}
+      </p>
     </div>
   </section>
 </template>
