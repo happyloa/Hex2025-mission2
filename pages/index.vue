@@ -19,7 +19,7 @@ useSeoMeta({
     <AtomIntro />
     <div class="mx-auto max-w-[1296px]">
       <h2 class="text-head-2-sm md:text-head-2 mb-8">專業服務與方案</h2>
-      <main class="mb-8 flex flex-col gap-8 px-3 lg:gap-16 lg:px-[110px]">
+      <main class="mb-8 flex flex-col gap-8 lg:gap-16 lg:px-[110px]">
         <CommonServiceCard
           image="service1"
           title="履歷健檢"
@@ -56,6 +56,14 @@ useSeoMeta({
   <section class="border-secondary border bg-bgc px-3 py-16 md:py-20">
     <div class="mx-auto max-w-[1296px]">
       <h2 class="text-head-2-sm md:text-head-2 mb-6">部落格精選</h2>
+    </div>
+  </section>
+  <section class="border-secondary border bg-bgc px-3 py-16 md:py-20">
+    <div class="mx-auto max-w-[1296px]">
+      <h2 class="text-head-2-sm md:text-head-2 mb-6">
+        職涯諮詢<br class="lg:hidden" />成功案例
+      </h2>
+      <div></div>
     </div>
   </section>
 </template>
