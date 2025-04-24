@@ -19,7 +19,7 @@ useSeoMeta({
     <AtomIntro />
     <div class="mx-auto max-w-[1296px]">
       <h2 class="text-head-2-sm md:text-head-2 mb-8">專業服務與方案</h2>
-      <main class="flex flex-col gap-8 px-3 lg:gap-16 lg:px-[110px]">
+      <main class="mb-8 flex flex-col gap-8 px-3 lg:gap-16 lg:px-[110px]">
         <CommonServiceCard
           image="service1"
           title="履歷健檢"
@@ -43,6 +43,14 @@ useSeoMeta({
           description="想讓團隊快速掌握前端最新技術或優化現有專案流程？我可協助打造專業、實用的企業內訓課程，一次解決團隊痛點。"
         />
       </main>
+      <div
+        class="flex flex-col items-end justify-end gap-2 lg:flex-row lg:items-center"
+      >
+        <p class="text-center text-fs-3">聯繫我，取得更多資訊！</p>
+        <a href="#" target="_blank" class="transition-all hover:translate-x-1"
+          ><img src="/icon/contact-me.webp"
+        /></a>
+      </div>
     </div>
   </section>
 </template>
