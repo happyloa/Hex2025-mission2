@@ -130,10 +130,6 @@ watch(
 
 ::
 
-::content-space
-
 ## 結語
 
 掌握 `setup()` 中的反應式 API、打造通用 Composable，並善用 `watchEffect`／`watch`，你就能快速上手 Vue 3 Composition API，寫出更結構化、易維護的元件。立即在專案中實作這三大關鍵，享受 Composition API 帶來的開發魅力！
-
-::

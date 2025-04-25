@@ -76,8 +76,6 @@ SEO（搜尋引擎最佳化）不只是給搜尋機器看的技術活，也是�
 
 ::
 
-::content-space
-
 ## 延伸閱讀
 
 - **Nuxt Content SEO 教學：動態產生 Meta 與 Sitemap**

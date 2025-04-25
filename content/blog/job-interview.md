@@ -75,8 +75,6 @@ isPopular: true
 
 ::
 
-::content-space
-
 ## 延伸閱讀
 
 - **自學前端不用怕：從零開始的三大關鍵**

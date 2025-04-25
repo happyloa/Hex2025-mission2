@@ -61,8 +61,6 @@ isPopular: false
 
 ::
 
-::content-space
-
 ## 延伸閱讀
 
 - 前端面試不再慌：破解常見提問的三大策略

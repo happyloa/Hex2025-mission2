@@ -75,8 +75,6 @@ isPopular: false
 
 ::
 
-::content-space
-
 ## 延伸閱讀
 
 - **Git Flow 實戰：打造團隊專屬分支規範**

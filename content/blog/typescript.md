@@ -54,8 +54,6 @@ TypeScript 為 JavaScript 注入靜態型別檢查，能在開發階段就捕捉
 
 ::
 
-::content-space
-
 ## 延伸閱讀
 
 - **官方資源：TypeScript Handbook**

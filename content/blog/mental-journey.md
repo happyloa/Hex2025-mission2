@@ -57,8 +57,6 @@ isPopular: false
 
 ::
 
-::content-space
-
 ## 延伸閱讀
 
 - **前端作品集打造指南：讓你的專案成為履歷亮點**

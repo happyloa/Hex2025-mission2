@@ -72,8 +72,6 @@ Flexbox 擅長一維佈局（橫/縱向排列），Grid 則可實現複雜的二
 
 ::
 
-::content-space
-
 ## 延伸閱讀
 
 - **CSS 進階排版技巧：掌握 Grid Area 與 subgrid**

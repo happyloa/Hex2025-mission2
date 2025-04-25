@@ -75,8 +75,6 @@ isPopular: false
 
 ::
 
-::content-space
-
 ## 延伸閱讀
 
 - **Node.js 版本管理最佳實踐：nvm 與 Docker**
