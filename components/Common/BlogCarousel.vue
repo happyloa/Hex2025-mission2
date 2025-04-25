@@ -26,7 +26,7 @@ const slideWidth = ref(0);
 
 /* ---------- 3. 計算每個斷點要顯示幾張 ---------- */
 const perView = computed(() =>
-  winW.value >= 1024 ? 3 : winW.value >= 768 ? 2 : 1,
+  winW.value >= 1024 ? 3 : winW.value >= 640 ? 2 : 1,
 );
 
 /* ---------- 4. 增加幽靈 slides 以做無縫循環 ---------- */
@@ -81,7 +81,7 @@ onUnmounted(() => {
   window.removeEventListener("keydown", keyHandler);
 });
 
-/* ---------- 10. 計算走馬燈軌道樣式 ---------- */
+/* ---------- 10. 計算輪播軌道樣式 ---------- */
 const trackStyle = computed(() => ({
   // 總寬 = slides.length * 單張卡寬 (px)
   width: `${slides.value.length * slideWidth.value}px`,
@@ -100,7 +100,7 @@ function onTransitionEnd() {
 </script>
 
 <template>
-  <div ref="container" class="relative overflow-hidden">
+  <div ref="container" class="relative -mx-3 mb-8 overflow-hidden xl:mb-0">
     <button
       class="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/80 p-3 shadow hover:bg-white"
       @click="prev"
@@ -114,17 +114,16 @@ function onTransitionEnd() {
       <img src="/icon/next.webp" alt="下一張" />
     </button>
 
-    <!-- 走馬燈軌道 -->
-    <ul class="-mx-3 flex" :style="trackStyle" @transitionend="onTransitionEnd">
+    <!-- 輪播軌道 -->
+    <ul class="flex" :style="trackStyle" @transitionend="onTransitionEnd">
       <li
         v-for="(post, idx) in slides"
         :key="idx"
-        class="shrink-0"
+        class="shrink-0 px-3"
         :style="{ flex: '0 0 auto', width: slideWidth + 'px' }"
       >
         <NuxtLink :to="post.slug">
-          <article class="group relative p-3">
-            <!-- 封面 -->
+          <article class="group relative">
             <figure class="mb-4 overflow-hidden border border-bgc-dark">
               <picture>
                 <source media="(max-width:1024px)" :srcset="post.mobileCover" />
@@ -134,11 +133,8 @@ function onTransitionEnd() {
                   class="block aspect-[3/2] w-full object-cover transition-transform duration-300 ease-in-out group-hover:rotate-2 group-hover:scale-110 lg:aspect-[16/9]"
                 />
               </picture>
-
-              <!-- 最新文章標籤：只針對「真正第一張」 -->
             </figure>
 
-            <!-- 內文 -->
             <time class="mb-1 text-fs-6">{{
               new Date(post.date).toLocaleDateString()
             }}</time>
