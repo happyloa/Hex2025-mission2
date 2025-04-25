@@ -16,7 +16,24 @@ const { data: posts } = await useAsyncData("blog-carousel", () =>
     .all(),
 );
 
-/* 2️⃣ 輪播狀態 ---------------------------------------------------------- */
+const windowWidth = ref(process.server ? 1024 : window.innerWidth);
+
+onMounted(() => {
+  const update = () => {
+    windowWidth.value = window.innerWidth;
+  };
+  update(); // 第一次先跑一次，確保正確寬度
+  window.addEventListener("resize", update);
+  onUnmounted(() => window.removeEventListener("resize", update));
+});
+
+const perView = computed(() => {
+  if (windowWidth.value >= 1024) return 3; // lg
+  if (windowWidth.value >= 768) return 2; // md
+  return 1; // sm 以下
+});
+
+/* ③ 輪播狀態 ---------------------------------------------------------- */
 const current = ref(0);
 const total = computed(() => posts.value?.length ?? 0);
 
@@ -27,13 +44,14 @@ function next() {
   current.value = (current.value + 1) % total.value;
 }
 
-/* 3️⃣ 內聯 style：translateX ------------------------------------------------*/
+/* ④ 動態 style -------------------------------------------------------- */
+const offset = computed(() => 100 / perView.value);
 const trackStyle = computed(() => ({
-  transform: `translateX(-${current.value * 100}%)`,
-  transition: "transform .3s ease",
+  width: `${(total.value / perView.value) * 100}%`,
+  transform: `translateX(-${current.value * offset.value}%)`,
+  transition: "transform .5s ease",
 }));
 
-/* 4️⃣ ⌨️ 鍵盤左右鍵輔助 -------------------------------------------------- */
 onMounted(() => {
   const handler = (e) => {
     if (e.key === "ArrowLeft") prev();
@@ -62,27 +80,26 @@ onMounted(() => {
       <img src="/icon/next.webp" alt="下一張" />
     </button>
 
-    <!-- 輪播軌道 ---------------------------------------------------------->
-    <ul class="flex w-full gap-6" :style="trackStyle">
+    <!-- Track ---------------------------------------------------------->
+    <ul class="flex gap-6" :style="trackStyle">
       <li
         v-for="(post, idx) in posts"
         :key="post.slug"
-        class="w-full shrink-0 md:w-1/2 lg:w-1/3"
+        class="w-full md:w-1/2 lg:w-1/3"
       >
         <NuxtLink :to="post.slug">
           <article class="group relative">
-            <!-- 封面 ------------------------------------------------------>
             <figure class="mb-4 overflow-hidden border border-bgc-dark">
               <picture>
                 <source media="(max-width:1024px)" :srcset="post.mobileCover" />
                 <img
                   :src="post.desktopCover"
                   :alt="post.title + ' 文章圖片'"
-                  class="block w-full transition-transform duration-300 ease-in-out group-hover:rotate-2 group-hover:scale-110"
+                  class="block aspect-[3/2] w-full object-cover transition-transform duration-300 ease-in-out group-hover:rotate-2 group-hover:scale-110 lg:aspect-[16/9]"
                 />
               </picture>
 
-              <!-- 最新文章標籤：只在 idx === 0 ------------------------------------------------>
+              <!-- 最新文章標籤：只在 idx === 0 -->
               <span
                 v-if="idx === 0"
                 class="absolute left-3 top-3 rounded-full bg-blue px-3 py-1.5 text-fs-6-bold text-white"
@@ -91,10 +108,9 @@ onMounted(() => {
               </span>
             </figure>
 
-            <!-- 內文資訊 --------------------------------------------------->
-            <time class="mb-1 text-fs-6">{{
-              new Date(post.date).toLocaleDateString()
-            }}</time>
+            <time class="mb-1 text-fs-6">
+              {{ new Date(post.date).toLocaleDateString() }}
+            </time>
 
             <ul class="mb-1 flex flex-wrap gap-x-2 gap-y-1">
               <li
