@@ -11,11 +11,80 @@ tags:
 isPopular: false
 ---
 
+::content-space
+
 ## 前言
 
-嗨，我是 Alyse，一名前端工程師兼職涯諮詢師。一直以來，我都很喜歡在部落格分享學習與工作心得，也常有讀者問：「我想轉職/自學前端，該從哪裡開始？」
-其實自學的過程既自由又具挑戰性。我整理了三大關鍵，幫助你在短期內建立紮實基礎，並快速累積實戰經驗。希望能替你的前端之路帶來一些啟發與動力！
+React 是目前最熱門的前端函式庫之一，但新手常常因為 JSX、元件化思維與狀態管理而感到迷惘。本篇文章將用「三步驟」的方式，帶你從零開始，一步步掌握 React 的核心概念，快速上手並應用在真實專案中。
 
-## 打好基礎：HTML、CSS、JavaScript
+::
 
-### HTML 與語意化
+![前言圖片](/desktop/blog/react-intro.webp)
+
+## 三步驟掌握 React 核心概念
+
+::content-block
+
+### 步驟一：理解 JSX 與元件化思維
+
+**為何重要**  
+JSX 讓你在 JavaScript 中直接撰寫類似 HTML 的語法，搭配元件化思維，可以把 UI 拆成更小、更可重用的區塊，提升專案維護性。
+
+**建議做法**
+
+1. 練習建立簡單函式元件：
+   ```jsx
+   function Hello() {
+     return <h1>Hello, React!</h1>;
+   }
+   ```
+2. 嘗試把頁面拆分成父子元件，並用 props 傳遞資料。
+3. 參考官方文件 [Quick Start](https://react.dev/learn){target="\_blank"}，深入理解其運作原理。
+
+::
+
+::content-block
+
+### 步驟二：掌握 State 與 Props
+
+**為何重要**
+Props 是父元件向子元件傳遞資料的唯一路徑，State 則是元件自身可變的狀態，兩者共同構成 React 的單向資料流機制。
+
+**建議做法**
+
+1. 在函式元件中使用 useState 管理狀態：
+   ```jsx
+   const [count, setCount] = useState(0);
+   ```
+2. 配合事件處理函式，呼叫 `setCount` 更新 state，觀察畫面自動重新渲染效果。
+3. 練習「狀態提升」（lifting state up），把多個元件共用的 state 抽離到共同父元件，實現「單一資料來源」。
+
+::
+
+::content-block
+
+### 步驟三：深入理解 Hook 與副作用管理
+
+**為何重要**
+自 React 16.8 起，Hook 讓函式元件也能使用生命週期方法與副作用管理。useEffect 是最常用的 Hook，能在元件渲染後執行資料抓取、訂閱、或清除操作。
+
+**建議做法**
+
+1. 用 useEffect 執行 API 請求：
+   ```jsx
+   useEffect(() => {
+     fetch("/api/posts")
+       .then((res) => res.json())
+       .then((data) => setPosts(data));
+   }, []);
+   ```
+2. 理解依賴陣列（dependency array）的意義，決定副作用執行時機。
+3. 嘗試其他 Hook：`useContext` 管理全域狀態、`useReducer` 處理複雜邏輯、`useMemo`／`useCallback` 優化效能。
+
+::
+
+::content-block
+
+> 小結：先掌握 JSX 與元件拆分，再理解 State 與 Props，最後活用 Hook 管理副作用，你就能打下穩固的 React 基礎，在專案中自由組合元件，應對各種互動需求。
+
+::

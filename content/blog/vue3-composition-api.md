@@ -11,11 +11,129 @@ tags:
 isPopular: false
 ---
 
+::content-space
+
 ## 前言
 
-嗨，我是 Alyse，一名前端工程師兼職涯諮詢師。一直以來，我都很喜歡在部落格分享學習與工作心得，也常有讀者問：「我想轉職/自學前端，該從哪裡開始？」
-其實自學的過程既自由又具挑戰性。我整理了三大關鍵，幫助你在短期內建立紮實基礎，並快速累積實戰經驗。希望能替你的前端之路帶來一些啟發與動力！
+Vue 3 的 Composition API 打破了傳統 Options API 的侷限，讓你能在 `setup()` 裡自由組合反應式邏輯與生命週期。對於剛從 Vue 2 或其他框架轉換的新手來說，可能一開始會被 `ref`、`reactive`、`watchEffect` 等概念搞得頭昏腦脹。本文將用「三大關鍵」示範，幫助你快速上手 Composition API，寫出更模組化、易維護的程式碼。
 
-## 打好基礎：HTML、CSS、JavaScript
+::
 
-### HTML 與語意化
+![前言圖片](/desktop/blog/vue3-composition-api.webp)
+
+::content-space
+
+## 三大關鍵快速掌握 Composition API
+
+::content-block
+
+### 關鍵一：理解 `setup()` 與反應式 API
+
+**為何重要**  
+`setup()` 是所有 Composition API 的起點，定義在此的 `ref`、`reactive`、`computed` 都能享受 Vue 的反應式追蹤。
+
+**建議做法**
+
+1. 在元件中使用 `ref` 管理單一原始值：
+
+   ```ts
+   import { ref } from "vue";
+
+   export default {
+     setup() {
+       const count = ref(0);
+       return { count };
+     },
+   };
+   ```
+
+2. 用 `reactive` 包成物件狀態：
+
+```ts
+const state = reactive({ items: [], loading: true });
+```
+
+3. 熟悉 `computed` 衍生狀態：
+
+```ts
+const double = computed(() => count.value * 2);
+```
+
+::
+
+::content-block
+
+### 關鍵二：打造可重用的 Composable
+
+**為何重要**  
+把重複邏輯封裝成 Composable（自訂 Hook），讓專案中不同元件能復用，程式碼更乾淨。
+
+**建議做法**
+
+1. 建立 `useFetch.ts`：
+
+```ts
+import { ref, onMounted } from "vue";
+
+export function useFetch(url: string) {
+  const data = ref(null);
+  const loading = ref(true);
+  onMounted(async () => {
+    data.value = await fetch(url).then((r) => r.json());
+    loading.value = false;
+  });
+  return { data, loading };
+}
+```
+
+2. 在元件中直接呼叫：
+
+```ts
+setup() {
+  const { data, loading } = useFetch('/api/posts')
+  return { data, loading }
+}
+
+```
+
+::
+
+::content-block
+
+### 關鍵三：善用 `watchEffect` 與 `watch`
+
+**為何重要**  
+監聽狀態改變、處理副作用時，watchEffect 讓你無須指定依賴，watch 可精確控制何時執行。
+
+**建議做法**
+
+- `watchEffect`：自動追蹤所有用到的 ref，適合簡單場景：
+
+```ts
+watchEffect(() => {
+  console.log(state.items.length);
+});
+```
+
+- `watch`：監聽特定來源，並處理新舊值：
+
+```ts
+watch(
+  () => props.id,
+  (newId, oldId) => {
+    fetchItem(newId);
+  },
+);
+```
+
+::
+
+::
+
+::content-space
+
+## 結語
+
+掌握 `setup()` 中的反應式 API、打造通用 Composable，並善用 `watchEffect`／`watch`，你就能快速上手 Vue 3 Composition API，寫出更結構化、易維護的元件。立即在專案中實作這三大關鍵，享受 Composition API 帶來的開發魅力！
+
+::
