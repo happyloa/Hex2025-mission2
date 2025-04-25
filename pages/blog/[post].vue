@@ -7,6 +7,15 @@ const route = useRoute();
 const { data: post } = await useAsyncData(`${route.path}`, () =>
   queryCollection("blog").path(route.path).first(),
 );
+
+useSeoMeta({
+  title: `${post.value.title} | 體驗營最終任務 - 個人品牌網站`,
+  ogTitle: post.value.title,
+  description: post.value.description,
+  ogDescription: post.value.description,
+  ogImage: "/ogImage.webp",
+  twitterCard: "/ogImage.webp",
+});
 </script>
 
 <template>
