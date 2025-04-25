@@ -21,7 +21,8 @@ isPopular: false
 
 ::content-space
 
-![前言圖片](/desktop/blog/unit-test.webp)
+::prose-img{src="/desktop/blog/unit-test.webp" alt="前言圖片"}
+::
 
 ## 三大測試階段與關鍵做法
 

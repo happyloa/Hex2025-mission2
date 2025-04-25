@@ -21,7 +21,8 @@ isPopular: false
 
 ::content-space
 
-![前言圖片](/desktop/blog/mental-journey.webp)
+::prose-img{src="/desktop/blog/mental-journey.webp" alt="前言圖片"}
+::
 
 ::content-block
 

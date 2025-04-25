@@ -19,7 +19,8 @@ React 是目前最熱門的前端函式庫之一，但新手常常因為 JSX、�
 
 ::
 
-![前言圖片](/desktop/blog/react-intro.webp)
+::prose-img{src="/desktop/blog/react-intro.webp" alt="前言圖片"}
+::
 
 ## 三步驟掌握 React 核心概念
 

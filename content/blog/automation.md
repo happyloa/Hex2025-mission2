@@ -21,7 +21,8 @@ isPopular: false
 
 ::content-space
 
-![前言圖片](/desktop/blog/automation.webp)
+::prose-img{src="/desktop/blog/automation.webp" alt="前言圖片"}
+::
 
 ## 三大祕訣穩定你的前端環境
 

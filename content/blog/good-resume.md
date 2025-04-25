@@ -21,7 +21,8 @@ isPopular: false
 
 ::content-space
 
-![前言圖片](/desktop/blog/good-resume.webp)
+::prose-img{src="/desktop/blog/good-resume.webp" alt="前言圖片"}
+::
 
 ::content-block
 

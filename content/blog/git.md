@@ -21,7 +21,8 @@ isPopular: false
 
 ::content-space
 
-![前言圖片](/desktop/blog/git.webp)
+::prose-img{src="/desktop/blog/git.webp" alt="前言圖片"}
+::
 
 ## 三大關鍵：打造穩定的 Git 協作流程
 

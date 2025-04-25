@@ -19,7 +19,8 @@ Vue 3 的 Composition API 打破了傳統 Options API 的侷限，讓你能在 `
 
 ::
 
-![前言圖片](/desktop/blog/vue3-composition-api.webp)
+::prose-img{src="/desktop/blog/vue3-composition-api.webp" alt="前言圖片"}
+::
 
 ::content-space
 

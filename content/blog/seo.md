@@ -21,7 +21,8 @@ SEO（搜尋引擎最佳化）不只是給搜尋機器看的技術活，也是�
 
 ::content-space
 
-![前言圖片](/desktop/blog/seo.webp)
+::prose-img{src="/desktop/blog/seo.webp" alt="前言圖片"}
+::
 
 ## 打好基礎：HTML、CSS、JavaScript
 

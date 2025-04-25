@@ -21,7 +21,8 @@ CSS 不只是顏色、字體和排版，更是塑造使用者體驗的關鍵工�
 
 ::content-space
 
-![前言圖片](/desktop/blog/css-magic.webp)
+::prose-img{src="/desktop/blog/css-magic.webp" alt="前言圖片"}
+::
 
 ## 三大關鍵技巧
 

@@ -21,7 +21,8 @@ TypeScript 為 JavaScript 注入靜態型別檢查，能在開發階段就捕捉
 
 ::content-space
 
-![前言圖片](/desktop/blog/typescript.webp)
+::prose-img{src="/desktop/blog/typescript.webp" alt="前言圖片"}
+::
 
 ## 三大關鍵導入流程
 

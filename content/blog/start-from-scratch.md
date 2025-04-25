@@ -22,7 +22,8 @@ isPopular: false
 
 ::content-space
 
-![前言圖片](/desktop/blog-content/content1.webp)
+::prose-img{src="/desktop/blog-content/content1.webp" alt="前言圖片"}
+::
 
 ## 打好基礎：HTML、CSS、JavaScript
 
@@ -71,7 +72,8 @@ isPopular: false
 
 ::content-space
 
-![擅用主流框架與工具](/desktop/blog-content/content2.webp)
+::prose-img{src="/desktop/blog-content/content2.webp" alt="擅用主流框架與工具"}
+::
 
 ## 擅用主流框架與工具
 
@@ -108,7 +110,8 @@ isPopular: false
 
 ::content-space
 
-![持續練習與參與社群](/desktop/blog-content/content3.webp)
+::prose-img{src="/desktop/blog-content/content3.webp" alt="持續練習與參與社群"}
+::
 
 ## 持續練習與參與社群
 
@@ -143,7 +146,8 @@ isPopular: false
 
 ::content-space
 
-![結語](/desktop/blog-content/content4.webp)
+::prose-img{src="/desktop/blog-content/content4.webp" alt="結語"}
+::
 
 ## 結語
 

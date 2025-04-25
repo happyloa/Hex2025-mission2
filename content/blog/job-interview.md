@@ -21,7 +21,8 @@ isPopular: true
 
 ::content-space
 
-![前言圖片](/desktop/blog/job-interview.webp)
+::prose-img{src="/desktop/blog/job-interview.webp" alt="前言圖片"}
+::
 
 ## 三大策略破解常見提問
 
