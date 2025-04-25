@@ -50,10 +50,7 @@ const latestPost = computed(() => latestArray.value?.[0] ?? null);
       :to="latestPost.slug"
       class="group flex-1 content-center px-3 py-12 lg:px-6 lg:py-0"
     >
-      <time
-        class="mb-1 block text-fs-6"
-        :datetime="new Date(latestPost.date).toISOString()"
-      >
+      <time class="mb-1 block text-fs-6">
         {{ new Date(latestPost.date).toLocaleDateString() }}
       </time>
       <ul class="mb-2 flex flex-wrap items-center gap-y-1">
