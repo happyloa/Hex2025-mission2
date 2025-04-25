@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { data: posts } = await useAsyncData("blog-carousel", () =>
   queryCollection("blog")
     .select(
@@ -16,79 +16,115 @@ const { data: posts } = await useAsyncData("blog-carousel", () =>
     .all(),
 );
 
-const windowWidth = ref(process.server ? 1024 : window.innerWidth);
+/* ---------- 2. DOM 參考 & 狀態 ---------- */
+// 外層容器，用來量測寬度
+const container = ref<HTMLElement | null>(null);
+// 視窗寬度
+const winW = ref(0);
+// 每張卡片的寬度 (px)
+const slideWidth = ref(0);
 
-onMounted(() => {
-  const update = () => {
-    windowWidth.value = window.innerWidth;
-  };
-  update(); // 第一次先跑一次，確保正確寬度
-  window.addEventListener("resize", update);
-  onUnmounted(() => window.removeEventListener("resize", update));
+/* ---------- 3. 計算每個斷點要顯示幾張 ---------- */
+const perView = computed(() =>
+  winW.value >= 1024 ? 3 : winW.value >= 768 ? 2 : 1,
+);
+
+/* ---------- 4. 增加幽靈 slides 以做無縫循環 ---------- */
+const slides = computed(() => {
+  const arr = posts.value ?? [];
+  const p = perView.value;
+  return arr.length ? [...arr.slice(-p), ...arr, ...arr.slice(0, p)] : [];
 });
 
-const perView = computed(() => {
-  if (windowWidth.value >= 1024) return 3; // lg
-  if (windowWidth.value >= 768) return 2; // md
-  return 1; // sm 以下
+/* ---------- 5. 目前顯示的索引 ---------- */
+const current = ref(perView.value);
+
+/* ---------- 6. 監聽斷點變更，重置索引並重新量測 ---------- */
+watch(perView, () => {
+  current.value = perView.value;
+  // 斷點切換後要等 DOM 更新再量測
+  nextTick(updateDims);
 });
 
-/* ③ 輪播狀態 ---------------------------------------------------------- */
-const current = ref(0);
-const total = computed(() => posts.value?.length ?? 0);
-
-function prev() {
-  current.value = (current.value - 1 + total.value) % total.value;
+/* ---------- 7. 計算容器尺寸 & 卡片寬度 ---------- */
+function updateDims() {
+  winW.value = window.innerWidth;
+  if (container.value) {
+    // container.clientWidth 取得外層真實寬度
+    slideWidth.value = container.value.clientWidth / perView.value;
+  }
 }
+
+/* ---------- 8. Prev / Next 按鈕 & 鍵盤 ---------- */
 function next() {
-  current.value = (current.value + 1) % total.value;
+  current.value++;
+}
+function prev() {
+  current.value--;
+}
+function keyHandler(e: KeyboardEvent) {
+  if (e.key === "ArrowLeft") prev();
+  if (e.key === "ArrowRight") next();
 }
 
-/* ④ 動態 style -------------------------------------------------------- */
-const offset = computed(() => 100 / perView.value);
+/* ---------- 9. onMounted / onUnmounted ---------- */
+onMounted(() => {
+  // 第一次量測
+  updateDims();
+  // 視窗大小改變時重算
+  window.addEventListener("resize", updateDims);
+  // 鍵盤左右鍵切換
+  window.addEventListener("keydown", keyHandler);
+});
+onUnmounted(() => {
+  window.removeEventListener("resize", updateDims);
+  window.removeEventListener("keydown", keyHandler);
+});
+
+/* ---------- 10. 計算走馬燈軌道樣式 ---------- */
 const trackStyle = computed(() => ({
-  width: `${(total.value / perView.value) * 100}%`,
-  transform: `translateX(-${current.value * offset.value}%)`,
+  // 總寬 = slides.length * 單張卡寬 (px)
+  width: `${slides.value.length * slideWidth.value}px`,
+  // 平移距離 = current * 單張卡寬 (px)
+  transform: `translateX(-${current.value * slideWidth.value}px)`,
   transition: "transform .5s ease",
 }));
 
-onMounted(() => {
-  const handler = (e) => {
-    if (e.key === "ArrowLeft") prev();
-    if (e.key === "ArrowRight") next();
-  };
-  window.addEventListener("keydown", handler);
-  onUnmounted(() => window.removeEventListener("keydown", handler));
-});
+/* ---------- 11. 無縫轉場處理 ---------- */
+function onTransitionEnd() {
+  const p = perView.value;
+  const real = (posts.value ?? []).length;
+  if (current.value < p) current.value = real + p - 1;
+  if (current.value >= real + p) current.value = p;
+}
 </script>
 
 <template>
-  <div class="relative overflow-hidden">
+  <div ref="container" class="relative overflow-hidden">
     <button
-      aria-label="上一張"
-      @click="prev"
       class="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/80 p-3 shadow hover:bg-white"
+      @click="prev"
     >
       <img src="/icon/prev.webp" alt="上一張" />
     </button>
-
     <button
-      aria-label="下一張"
-      @click="next"
       class="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/80 p-3 shadow hover:bg-white"
+      @click="next"
     >
       <img src="/icon/next.webp" alt="下一張" />
     </button>
 
-    <!-- Track ---------------------------------------------------------->
-    <ul class="flex gap-6" :style="trackStyle">
+    <!-- 走馬燈軌道 -->
+    <ul class="-mx-3 flex" :style="trackStyle" @transitionend="onTransitionEnd">
       <li
-        v-for="(post, idx) in posts"
-        :key="post.slug"
-        class="w-full md:w-1/2 lg:w-1/3"
+        v-for="(post, idx) in slides"
+        :key="idx"
+        class="shrink-0"
+        :style="{ flex: '0 0 auto', width: slideWidth + 'px' }"
       >
         <NuxtLink :to="post.slug">
-          <article class="group relative">
+          <article class="group relative p-3">
+            <!-- 封面 -->
             <figure class="mb-4 overflow-hidden border border-bgc-dark">
               <picture>
                 <source media="(max-width:1024px)" :srcset="post.mobileCover" />
@@ -99,26 +135,16 @@ onMounted(() => {
                 />
               </picture>
 
-              <!-- 最新文章標籤：只在 idx === 0 -->
-              <span
-                v-if="idx === 0"
-                class="absolute left-3 top-3 rounded-full bg-blue px-3 py-1.5 text-fs-6-bold text-white"
-              >
-                最新文章
-              </span>
+              <!-- 最新文章標籤：只針對「真正第一張」 -->
             </figure>
 
-            <time class="mb-1 text-fs-6">
-              {{ new Date(post.date).toLocaleDateString() }}
-            </time>
-
+            <!-- 內文 -->
+            <time class="mb-1 text-fs-6">{{
+              new Date(post.date).toLocaleDateString()
+            }}</time>
             <ul class="mb-1 flex flex-wrap gap-x-2 gap-y-1">
-              <li
-                v-for="(tag, tIdx) in post.tags"
-                :key="tIdx"
-                class="text-fs-4 text-blue"
-              >
-                {{ "#" + tag }}
+              <li v-for="t in post.tags" :key="t" class="text-fs-4 text-blue">
+                #{{ t }}
               </li>
               <li
                 v-if="post.isPopular"
@@ -126,14 +152,17 @@ onMounted(() => {
               >
                 人氣文章
               </li>
+              <li
+                v-if="idx === perView"
+                class="rounded-full bg-blue px-3 py-1.5 text-fs-6-bold text-white"
+              >
+                最新文章
+              </li>
             </ul>
-
             <h3 class="mb-2 text-fs-3-bold">{{ post.title }}</h3>
-
-            <p class="line-clamp | mb-4 text-fs-6 text-content">
+            <p class="line-clamp mb-4 text-fs-6 text-content">
               {{ post.description }}
             </p>
-
             <button
               type="button"
               class="rounded-full border border-black px-4 py-2 text-fs-6 text-content transition group-hover:bg-content group-hover:text-white"
