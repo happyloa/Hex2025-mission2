@@ -17,7 +17,8 @@ export default defineNuxtConfig({
   // Google Fonts 的相關配置
   googleFonts: {
     families: {
-      "Noto+Sans+TC": [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      "Noto+Sans+TC": [400, 500, 700, 900],
+      "Noto+Serif+TC": [700],
     },
     download: true,
     inject: true,
