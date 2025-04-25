@@ -53,10 +53,7 @@ Props 是父元件向子元件傳遞資料的唯一路徑，State 則是元件�
 
 **建議做法**
 
-1. 在函式元件中使用 useState 管理狀態：
-   ```jsx
-   const [count, setCount] = useState(0);
-   ```
+1. 在函式元件中使用 useState 管理狀態
 2. 配合事件處理函式，呼叫 `setCount` 更新 state，觀察畫面自動重新渲染效果。
 3. 練習「狀態提升」（lifting state up），把多個元件共用的 state 抽離到共同父元件，實現「單一資料來源」。
 

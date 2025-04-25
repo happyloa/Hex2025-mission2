@@ -48,60 +48,14 @@ Vue 3 的 Composition API 打破了傳統 Options API 的侷限，讓你能在 `
    };
    ```
 
-2. 用 `reactive` 包成物件狀態：
-
-```ts
-const state = reactive({ items: [], loading: true });
-```
-
-3. 熟悉 `computed` 衍生狀態：
-
-```ts
-const double = computed(() => count.value * 2);
-```
+2. 用 `reactive` 包成物件狀態
+3. 熟悉 `computed` 衍生狀態
 
 ::
 
 ::content-block
 
-### 關鍵二：打造可重用的 Composable
-
-**為何重要**  
-把重複邏輯封裝成 Composable（自訂 Hook），讓專案中不同元件能復用，程式碼更乾淨。
-
-**建議做法**
-
-1. 建立 `useFetch.ts`：
-
-```ts
-import { ref, onMounted } from "vue";
-
-export function useFetch(url: string) {
-  const data = ref(null);
-  const loading = ref(true);
-  onMounted(async () => {
-    data.value = await fetch(url).then((r) => r.json());
-    loading.value = false;
-  });
-  return { data, loading };
-}
-```
-
-2. 在元件中直接呼叫：
-
-```ts
-setup() {
-  const { data, loading } = useFetch('/api/posts')
-  return { data, loading }
-}
-
-```
-
-::
-
-::content-block
-
-### 關鍵三：善用 `watchEffect` 與 `watch`
+### 關鍵二：善用 `watchEffect` 與 `watch`
 
 **為何重要**  
 監聽狀態改變、處理副作用時，watchEffect 讓你無須指定依賴，watch 可精確控制何時執行。
