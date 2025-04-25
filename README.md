@@ -60,8 +60,8 @@ http://localhost:3000/
 ```
 pages
 └── blog
-    ├── index               部落格頁面（/blog）
-    └── [post]              單篇文章動態頁面（/blog/post）
+    ├── index                  部落格頁面（/blog）
+    └── [post]                 單篇文章動態頁面（/blog/post）
 └── index                      首頁（/）
 ```
 
