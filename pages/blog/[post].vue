@@ -15,7 +15,7 @@ const { data: post } = await useAsyncData(`${route.path}`, () =>
     v-if="post"
     class="mx-auto max-w-[1920px] border border-secondary bg-bgc px-3 py-16 md:py-20"
   >
-    <article class="prose mx-auto max-w-[636px]">
+    <article class="prose mx-auto mb-12 max-w-[636px]">
       <!-- 正文，ContentRenderer 會自動把 Markdown 轉成 HTML + Vue 元件 -->
       <ContentRenderer :value="post" />
     </article>
