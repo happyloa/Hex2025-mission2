@@ -24,7 +24,7 @@ defineProps({
 <template>
   <article>
     <img :src="`/avatar/${image}.webp`" alt="客戶圖片" class="mb-4" />
-    <h3 class="text-fs-4-bold mb-2">{{ title }}</h3>
+    <h3 class="mb-2 text-fs-4-bold">{{ title }}</h3>
     <ul
       class="mb-4 list-image-[url(avatar/check.webp)] pl-6 text-fs-6 text-content"
     >

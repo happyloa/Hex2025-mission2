@@ -49,7 +49,7 @@ defineProps({
       :class="reverse ? 'left-0' : 'right-0'"
     >
       <img src="/icon/dash.png" alt="裝飾線條" />
-      <h3 class="text-fs-3-bold mb-2">{{ title }}</h3>
+      <h3 class="mb-2 text-fs-3-bold">{{ title }}</h3>
       <p class="text-fs-6 text-content">
         {{ description }}
       </p>

@@ -78,7 +78,7 @@ useSeoMeta({
         </figure>
       </div>
       <div
-        class="right-0 top-1/2 flex max-w-[745px] -mt-40 flex-col gap-3 bg-bgc md:absolute md:mt-0 md:h-[568px] md:-translate-y-1/2"
+        class="right-0 top-1/2 -mt-40 flex max-w-[745px] flex-col gap-3 bg-bgc md:absolute md:mt-0 md:h-[568px] md:-translate-y-1/2"
       >
         <!-- 介紹卡片1 -->
         <article
