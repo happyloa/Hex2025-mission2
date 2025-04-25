@@ -12,7 +12,7 @@ const { data: posts } = await useAsyncData("blog-carousel", () =>
       "isPopular",
     )
     .order("date", "DESC")
-    .limit(6)
+    .limit(10)
     .all(),
 );
 
