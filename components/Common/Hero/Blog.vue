@@ -46,10 +46,7 @@ const latestPost = computed(() => latestArray.value?.[0] ?? null);
         />
       </picture>
     </figure>
-    <NuxtLink
-      :to="latestPost.slug"
-      class="group flex-1 content-center px-3 py-12 lg:px-6 lg:py-0"
-    >
+    <div class="flex-1 content-center px-3 py-12 lg:px-6 lg:py-0">
       <time class="mb-1 block text-fs-6">
         {{ new Date(latestPost.date).toLocaleDateString() }}
       </time>
@@ -68,23 +65,25 @@ const latestPost = computed(() => latestArray.value?.[0] ?? null);
           最新文章
         </li>
       </ul>
-      <h2 class="mb-2 text-fs-3-bold lg:whitespace-nowrap">
-        {{ latestPost.title }}
-      </h2>
-      <p
-        v-if="!hidePreview"
-        class="line-clamp | mb-4 text-fs-6 lg:max-w-[636px]"
-      >
-        {{ latestPost.description }}
-      </p>
-      <button
-        v-if="!hidePreview"
-        type="button"
-        class="rounded-full border border-black px-4 py-2 text-fs-6 text-content transition group-hover:bg-content group-hover:text-white"
-      >
-        閱讀內文
-      </button>
-    </NuxtLink>
+      <NuxtLink :to="latestPost.slug" class="group block">
+        <h2 class="mb-2 text-fs-3-bold lg:whitespace-nowrap">
+          {{ latestPost.title }}
+        </h2>
+        <p
+          v-if="!hidePreview"
+          class="line-clamp | mb-4 text-fs-6 lg:max-w-[636px]"
+        >
+          {{ latestPost.description }}
+        </p>
+        <button
+          v-if="!hidePreview"
+          type="button"
+          class="rounded-full border border-black px-4 py-2 text-fs-6 text-content transition group-hover:bg-content group-hover:text-white"
+        >
+          閱讀內文
+        </button>
+      </NuxtLink>
+    </div>
   </section>
 </template>
 
