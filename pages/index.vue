@@ -14,11 +14,11 @@ useSeoMeta({
 <template>
   <CommonHero title="Alyse Wang" subtitle="前端工程師 & 職涯諮詢師" />
   <section
-    class="border-secondary relative mx-auto max-w-[1920px] border-b bg-bgc px-3 pb-16 pt-[356px] md:pb-20 md:pt-[282px]"
+    class="relative mx-auto max-w-[1920px] border-b border-secondary bg-bgc px-3 pb-16 pt-[356px] md:pb-20 md:pt-[282px]"
   >
     <AtomIntro />
     <div class="mx-auto max-w-[1296px]">
-      <h2 class="text-head-2-sm md:text-head-2 mb-8">專業服務與方案</h2>
+      <h2 class="mb-8 text-head-2-sm md:text-head-2">專業服務與方案</h2>
       <main class="mb-8 flex flex-col gap-8 lg:gap-16 lg:px-[110px]">
         <CommonServiceCard
           image="service1"
@@ -46,7 +46,7 @@ useSeoMeta({
       <div
         class="flex flex-col items-end justify-end gap-2 lg:flex-row lg:items-center"
       >
-        <p class="text-fs-3-bold text-center">聯繫我，取得更多資訊！</p>
+        <p class="text-center text-fs-3-bold">聯繫我，取得更多資訊！</p>
         <a href="#" target="_blank" class="transition-all hover:translate-x-1"
           ><img src="/icon/contact-me.webp" alt="聯繫我"
         /></a>
@@ -54,10 +54,11 @@ useSeoMeta({
     </div>
   </section>
   <LayoutContainer>
-    <h2 class="text-head-2-sm md:text-head-2 mb-6">部落格精選</h2>
+    <h2 class="mb-6 text-head-2-sm md:text-head-2">部落格精選</h2>
+    <CommonBlogCarousel />
   </LayoutContainer>
   <LayoutContainer>
-    <h2 class="text-head-2-sm md:text-head-2 mb-6">
+    <h2 class="mb-6 text-head-2-sm md:text-head-2">
       職涯諮詢<br class="lg:hidden" />成功案例
     </h2>
     <div class="relative mb-10">
@@ -96,12 +97,12 @@ useSeoMeta({
           class="bottom-0 right-0 bg-[#F5F5F5] px-6 py-10 md:absolute md:w-[526px] md:px-10 md:py-20"
         >
           <img src="/icon/dash.png" alt="裝飾線條" class="mb-6" />
-          <p class="text-fs-6-bold mb-6">
+          <p class="mb-6 text-fs-6-bold">
             期待在下一個新機會中，我能與你一起攜手邁向更高峰！
           </p>
           <button
             type="button"
-            class="text-fs-6-bold rounded-full border border-blue bg-white px-4 py-2 text-blue transition-all hover:bg-blue hover:text-white"
+            class="rounded-full border border-blue bg-white px-4 py-2 text-fs-6-bold text-blue transition-all hover:bg-blue hover:text-white"
           >
             立即預約諮詢
           </button>
@@ -152,14 +153,14 @@ useSeoMeta({
       class="flex-1 content-center bg-[url('/desktop/home/newsletter-deco.webp')] bg-cover p-3 lg:p-20"
     >
       <div class="flex-1 bg-white px-6 py-10 lg:p-20">
-        <h2 class="text-head-2-sm xl:text-head-2 mb-4 whitespace-nowrap">
+        <h2 class="mb-4 whitespace-nowrap text-head-2-sm xl:text-head-2">
           訂閱電子報
         </h2>
-        <p class="text-fs-5 mb-6">
+        <p class="mb-6 text-fs-5">
           立即訂閱，搶先掌握<span class="text-blue">前端 x 職涯</span
           >的獨家資訊！
         </p>
-        <form class="text-fs-5 flex flex-col items-start text-content">
+        <form class="flex flex-col items-start text-fs-5 text-content">
           <input
             type="text"
             placeholder="請輸入您的大名"
@@ -172,7 +173,7 @@ useSeoMeta({
           />
           <button
             type="submit"
-            class="text-fs-6-bold rounded-full border border-blue bg-white px-4 py-2 text-blue transition-all hover:bg-blue hover:text-white"
+            class="rounded-full border border-blue bg-white px-4 py-2 text-fs-6-bold text-blue transition-all hover:bg-blue hover:text-white"
           >
             啟動訂閱
           </button>
@@ -181,7 +182,7 @@ useSeoMeta({
     </div>
   </section>
   <LayoutContainer>
-    <h2 class="text-head-2-sm md:text-head-2 mb-6">與我聯繫</h2>
+    <h2 class="mb-6 text-head-2-sm md:text-head-2">與我聯繫</h2>
     <ul class="text-fs-4">
       <li>
         <a
@@ -189,7 +190,7 @@ useSeoMeta({
           class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-black pb-4"
         >
           <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <span class="lg:text-fs-2 break-all underline"
+            <span class="break-all underline lg:text-fs-2"
               >alysewang@hexschool.com</span
             >
             <span class="lg:text-fs-3">合作洽談</span>
