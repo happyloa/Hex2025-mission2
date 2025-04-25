@@ -60,8 +60,8 @@ http://localhost:3000/
 ```
 pages
 └── blog
-	├── index                  部落格頁面（/blog）
-    └── [post]                 單篇文章動態頁面（/blog/post）
+       ├── index               部落格頁面（/blog）
+       └── [post]              單篇文章動態頁面（/blog/post）
 └── index                      首頁（/）
 ```
 
@@ -73,7 +73,7 @@ pages
 
 ```
 components
-└── Atom                       頁面上的小型元件
+├── Atom                       頁面上的小型元件
 ├── Common                     通用元件，例如卡片、Hero 區塊等
 ├── content                    客製化由 Nuxt Content 產生的文章內容所需的 Prose 元件
 ├── Layout                     導覽選單、頁尾與通用的頁面區塊 container
@@ -89,7 +89,7 @@ components
 
 ```
 public
-└── avatar                     客戶頭像
+├── avatar                     客戶頭像
 ├── desktop                    電腦版圖片
 ├── icon                       在網站上使用的各式 icon
 ├── mobile                     行動版圖片
