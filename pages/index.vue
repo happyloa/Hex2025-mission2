@@ -160,23 +160,45 @@ useSeoMeta({
           立即訂閱，搶先掌握<span class="text-blue">前端 x 職涯</span
           >的獨家資訊！
         </p>
-        <form class="flex flex-col items-start text-fs-5 text-content">
+        <form
+          action="https://worksbyaaron.us7.list-manage.com/subscribe/post?u=5c2ba121d2df444aab43ffbf7&amp;id=a39e97dde9"
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          class="flex flex-col items-start text-fs-5 text-content"
+          target="_blank"
+          novalidate
+        >
           <input
             type="text"
+            name="FNAME"
             placeholder="請輸入您的大名"
             class="mb-2 w-full bg-bgc-dark px-4 py-2 placeholder:text-content focus:outline-0"
           />
           <input
             type="email"
+            name="EMAIL"
             placeholder="請輸入您的電子信箱"
+            required
             class="mb-6 w-full bg-bgc-dark px-4 py-2 placeholder:text-content focus:outline-0"
           />
-          <button
+          <input type="hidden" name="tags" value="1178243,1178244" />
+          <!-- Honeypot 隱藏欄位，防止機器人 -->
+          <div aria-hidden="true" style="position: absolute; left: -5000px">
+            <input
+              type="text"
+              name="b_5c2ba121d2df444aab43ffbf7_a39e97dde9"
+              tabindex="-1"
+              value=""
+            />
+          </div>
+          <input
             type="submit"
-            class="rounded-full border border-blue bg-white px-4 py-2 text-fs-6-bold text-blue transition-all hover:bg-blue hover:text-white"
-          >
-            啟動訂閱
-          </button>
+            value="啟動訂閱"
+            name="subscribe"
+            id="mc-embedded-subscribe"
+            class="cursor-pointer rounded-full border border-blue bg-white px-4 py-2 text-fs-6-bold text-blue transition-all hover:bg-blue hover:text-white"
+          />
         </form>
       </div>
     </div>
