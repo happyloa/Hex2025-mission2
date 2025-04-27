@@ -33,24 +33,31 @@ const currentIndex = computed(() =>
 );
 
 // 是否存在「上一篇」（較新的文章）
-const hasPrev = computed(() => currentIndex.value > 0);
-// 是否存在「下一篇」（較舊的文章）
-const hasNext = computed(
+const hasPrev = computed(
   () => currentIndex.value >= 0 && currentIndex.value < paths.value.length - 1,
 );
+// 是否存在「下一篇」（較舊的文章）
+const hasNext = computed(() => currentIndex.value > 0);
 
-// 8. 計算前後連結路徑
+// 計算前後連結路徑
 const prevPath = computed(() =>
-  hasPrev.value ? paths.value[currentIndex.value - 1] : "",
+  hasPrev.value ? paths.value[currentIndex.value + 1] : "",
 );
 const nextPath = computed(() =>
-  hasNext.value ? paths.value[currentIndex.value + 1] : "",
+  hasNext.value ? paths.value[currentIndex.value - 1] : "",
 );
 
-// 是否是最新文章（陣列索引 0）
-const isFirst = computed(() => currentIndex.value === 0);
-// 是否是最舊文章（陣列最後一筆）
-const isLast = computed(() => currentIndex.value === paths.value.length - 1);
+// 依既有 hasPrev / hasNext 推導是否停用（＝顯示但不可點）
+const prevDisabled = computed(() => !hasPrev.value); // 沒有「上一篇」=> 停用左邊按鈕
+const nextDisabled = computed(() => !hasNext.value); // 沒有「下一篇」=> 停用右邊按鈕
+
+// 停用時 fallback 到本頁，避免死連結
+const prevTo = computed(() =>
+  prevDisabled.value ? route.path : prevPath.value,
+);
+const nextTo = computed(() =>
+  nextDisabled.value ? route.path : nextPath.value,
+);
 </script>
 
 <template>
@@ -66,24 +73,22 @@ const isLast = computed(() => currentIndex.value === paths.value.length - 1);
       class="prose mx-auto mb-12 max-w-[636px]"
     />
     <nav
-      class="mx-auto flex max-w-[636px] flex-wrap items-center justify-between gap-6 whitespace-nowrap text-fs-6"
+      class="mx-auto flex max-w-[636px] flex-wrap items-center justify-between gap-6 whitespace-nowrap text-fs-6 text-content"
     >
       <NuxtLink
-        v-if="hasNext"
-        :to="nextPath"
-        class="flex items-center gap-1 rounded-full border border-black px-4 py-2 text-content transition-all hover:-translate-x-1"
+        :to="prevTo"
+        class="flex items-center gap-1 rounded-full border border-black px-4 py-2 transition-all hover:-translate-x-1"
+        :class="prevDisabled ? 'pointer-events-none opacity-60' : ''"
       >
         <img src="/icon/prev.webp" alt="箭頭 icon" />
-        {{ hasNext ? "上一篇" : "下一篇" }}
+        上一篇
       </NuxtLink>
-      <p v-if="isFirst" class="text-fs-6 text-content">這是最新的文章</p>
-      <p v-if="isLast" class="text-fs-6 text-content">這是最舊的文章</p>
       <NuxtLink
-        v-if="hasPrev"
-        :to="prevPath"
-        class="flex items-center gap-1 rounded-full border border-black px-4 py-2 text-content transition-all hover:translate-x-1"
+        :to="nextTo"
+        class="flex items-center gap-1 rounded-full border border-black px-4 py-2 transition-all hover:translate-x-1"
+        :class="nextDisabled ? 'pointer-events-none opacity-60' : ''"
       >
-        {{ hasPrev ? "下一篇" : "上一篇" }}
+        下一篇
         <img src="/icon/next.webp" alt="箭頭 icon" />
       </NuxtLink>
     </nav>
