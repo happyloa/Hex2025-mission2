@@ -26,7 +26,7 @@ defineProps({
     <img :src="`/avatar/${image}.webp`" alt="客戶圖片" class="mb-4" />
     <h3 class="mb-2 text-fs-4-bold">{{ title }}</h3>
     <ul
-      class="mb-4 list-inside list-image-[url('avatar/check.webp')] text-fs-6 text-content"
+      class="mb-4 list-inside list-image-[url('/avatar/check.webp')] text-fs-6 text-content"
     >
       <li v-for="(item, index) in list" :key="index">{{ item }}</li>
     </ul>
