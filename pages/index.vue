@@ -14,7 +14,7 @@ useSeoMeta({
 <template>
   <CommonHero title="Alyse Wang" subtitle="前端工程師 & 職涯諮詢師" />
   <section
-    class="relative mx-auto max-w-[1920px] border-b border-secondary bg-bgc px-3 pb-16 pt-[356px] md:pb-20 md:pt-[282px]"
+    class="relative mx-auto max-w-[1920px] border-b border-secondary bg-bgc px-3 pb-16 pt-[312px] md:pb-20 md:pt-[282px]"
   >
     <AtomIntro />
     <div class="mx-auto max-w-[1296px]">
