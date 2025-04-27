@@ -7,32 +7,6 @@
       擅長 React、Vue
       等框架，同時熱愛為轉職與新手工程師提供職涯指導。邀請你與我一起，開啟更具潛能的程式與職涯之旅！
     </p>
-    <ul class="flex gap-1">
-      <li class="transition-all hover:-translate-y-1">
-        <a href="#" target="_blank"
-          ><img src="/icon/youtube.webp" alt="youtube icon"
-        /></a>
-      </li>
-      <li class="transition-all hover:-translate-y-1">
-        <a href="#" target="_blank"
-          ><img src="/icon/podcast.webp" alt="podcast icon"
-        /></a>
-      </li>
-      <li class="transition-all hover:-translate-y-1">
-        <a href="#" target="_blank"
-          ><img src="/icon/facebook.webp" alt="facebook icon"
-        /></a>
-      </li>
-      <li class="transition-all hover:-translate-y-1">
-        <a href="#" target="_blank"
-          ><img src="/icon/linkedin.webp" alt="linkedin icon"
-        /></a>
-      </li>
-      <li class="transition-all hover:-translate-y-1">
-        <a href="#" target="_blank"
-          ><img src="/icon/instagram.webp" alt="instagram icon"
-        /></a>
-      </li>
-    </ul>
+    <AtomSocialIcon />
   </div>
 </template>
