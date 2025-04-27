@@ -73,7 +73,7 @@ const isLast = computed(() => currentIndex.value === paths.value.length - 1);
         :to="nextPath"
         class="flex items-center gap-1 rounded-full border border-black px-4 py-2 text-content transition-all hover:-translate-x-1"
       >
-        <img src="/icon/prev.webp" :alt="hasNext ? '上一篇' : '下一篇'" />
+        <img src="/icon/prev.webp" alt="箭頭 icon" />
         {{ hasNext ? "上一篇" : "下一篇" }}
       </NuxtLink>
       <p v-if="isFirst" class="text-fs-6 text-content">這是最新的文章</p>
@@ -84,7 +84,7 @@ const isLast = computed(() => currentIndex.value === paths.value.length - 1);
         class="flex items-center gap-1 rounded-full border border-black px-4 py-2 text-content transition-all hover:translate-x-1"
       >
         {{ hasPrev ? "下一篇" : "上一篇" }}
-        <img src="/icon/next.webp" :alt="hasPrev ? '下一篇' : '上一篇'" />
+        <img src="/icon/next.webp" alt="箭頭 icon" />
       </NuxtLink>
     </nav>
   </section>
