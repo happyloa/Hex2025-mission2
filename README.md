@@ -108,6 +108,7 @@ content
 - [Nuxt Google Fonts](https://google-fonts.nuxtjs.org/)
 - [Nuxt Tailwind](https://tailwindcss.nuxtjs.org/)
 - [Nuxt Google Tag](https://nuxt.com/modules/gtag/)
+- [Nuxt AOS](https://nuxt.com/modules/aos)
 - [Vue Router](https://router.vuejs.org/)
 - [TinyPNG](https://tinypng.com/)
 - [ChatGPT o4-mini-high](https://openai.com/)
