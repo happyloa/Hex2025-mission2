@@ -25,6 +25,7 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxt/content",
     "nuxt-gtag",
+    "nuxt-aos",
   ],
 
   gtag: {
