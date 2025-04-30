@@ -19,6 +19,7 @@ const { data: posts } = await useAsyncData("blog-carousel", () =>
 
 /* ---------- 2. DOM 參考 & 狀態 ---------- */
 const container = ref<HTMLElement | null>(null);
+const trackRef = ref<HTMLElement | null>(null);
 const winW = ref(0);
 const slideWidth = ref(0);
 
@@ -27,13 +28,13 @@ const perView = computed(() =>
   winW.value >= 1024 ? 3 : winW.value >= 640 ? 2 : 1,
 );
 
-/* ---------- 4. slides：去掉幽靈卡片 ─── 直接用文章陣列 ---------- */
+/* ---------- 4. 直接使用文章陣列 ---------- */
 const slides = computed(() => posts.value ?? []);
 
-/* ---------- 5. 目前起始索引：從 0 開始 ---------- */
+/* ---------- 5. 目前起始索引 ---------- */
 const current = ref(0);
 
-/* ---------- 6. 監聽斷點切換：如果目前索引超出新尾端就回調 ---------- */
+/* ---------- 6. 斷點切換時調整 ---------- */
 watch(perView, () => {
   nextTick(() => {
     updateDims();
@@ -50,7 +51,7 @@ function updateDims() {
   }
 }
 
-/* ---------- 8. Prev / Next（加入邊界判斷） ---------- */
+/* ---------- 8. Prev / Next ---------- */
 function next() {
   if (!isLast.value) current.value++;
 }
@@ -62,7 +63,40 @@ function keyHandler(e: KeyboardEvent) {
   if (e.key === "ArrowRight") next();
 }
 
-/* ---------- 9. mounted / unmounted ---------- */
+/* ---------- 9. 拖曳狀態 ---------- */
+const isDragging = ref(false); // 目前是否在拖曳
+const startX = ref(0); // pointerdown 的 x 位置
+const dragDelta = ref(0); // 即時位移
+const enableTran = ref(true); // 是否啟用 transition
+
+function onPointerDown(e: PointerEvent) {
+  isDragging.value = true;
+  startX.value = e.clientX;
+  dragDelta.value = 0;
+  enableTran.value = false; // 拖曳時關閉動畫
+  (e.target as HTMLElement).setPointerCapture(e.pointerId);
+}
+function onPointerMove(e: PointerEvent) {
+  if (!isDragging.value) return;
+  dragDelta.value = e.clientX - startX.value;
+}
+function onPointerUp(e: PointerEvent) {
+  if (!isDragging.value) return;
+  isDragging.value = false;
+  enableTran.value = true; // 結束後恢復動畫
+
+  // 若拖曳距離超過 1/4 slide 寬 → 切換
+  const threshold = slideWidth.value / 4;
+  if (dragDelta.value > threshold && !isFirst.value) {
+    prev();
+  } else if (dragDelta.value < -threshold && !isLast.value) {
+    next();
+  }
+  dragDelta.value = 0; // 重設位移
+  (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+}
+
+/* ---------- 10. mounted / unmounted ---------- */
 onMounted(() => {
   updateDims();
   window.addEventListener("resize", updateDims);
@@ -73,14 +107,17 @@ onUnmounted(() => {
   window.removeEventListener("keydown", keyHandler);
 });
 
-/* ---------- 10. 計算軌道位移 ---------- */
+/* ---------- 11. 軌道樣式 ---------- */
+const offsetX = computed(
+  () => -current.value * slideWidth.value + dragDelta.value,
+);
 const trackStyle = computed(() => ({
   width: `${slides.value.length * slideWidth.value}px`,
-  transform: `translateX(-${current.value * slideWidth.value}px)`,
-  transition: "transform .5s ease",
+  transform: `translateX(${offsetX.value}px)`,
+  transition: enableTran.value ? "transform .5s ease" : "none",
 }));
 
-/* ---------- 11. 是否在開頭 / 結尾 ── 給按鈕用 ---------- */
+/* ---------- 12. 邊界判斷 ---------- */
 const isFirst = computed(() => current.value === 0);
 const isLast = computed(
   () => current.value >= slides.value.length - perView.value,
@@ -110,7 +147,16 @@ const isLast = computed(
 
     <div class="overflow-hidden">
       <!-- 輪播軌道 -->
-      <ul class="flex" :style="trackStyle">
+      <ul
+        ref="trackRef"
+        class="flex select-none"
+        :style="trackStyle"
+        @pointerdown="onPointerDown"
+        @pointermove="onPointerMove"
+        @pointerup="onPointerUp"
+        @pointercancel="onPointerUp"
+        @pointerleave="onPointerUp"
+      >
         <li
           v-for="(post, idx) in slides"
           :key="idx"
