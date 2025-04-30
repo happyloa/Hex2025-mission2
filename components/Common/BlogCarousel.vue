@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/* ---------- 1. 讀取文章 ---------- */
 const { data: posts } = await useAsyncData("blog-carousel", () =>
   queryCollection("blog")
     .select(
@@ -17,63 +18,54 @@ const { data: posts } = await useAsyncData("blog-carousel", () =>
 );
 
 /* ---------- 2. DOM 參考 & 狀態 ---------- */
-// 外層容器，用來量測寬度
 const container = ref<HTMLElement | null>(null);
-// 視窗寬度
 const winW = ref(0);
-// 每張卡片的寬度 (px)
 const slideWidth = ref(0);
 
-/* ---------- 3. 計算每個斷點要顯示幾張 ---------- */
+/* ---------- 3. 依斷點決定一次顯示張數 ---------- */
 const perView = computed(() =>
   winW.value >= 1024 ? 3 : winW.value >= 640 ? 2 : 1,
 );
 
-/* ---------- 4. 增加幽靈 slides 以做無縫循環 ---------- */
-const slides = computed(() => {
-  const arr = posts.value ?? [];
-  const p = perView.value;
-  return arr.length ? [...arr.slice(-p), ...arr, ...arr.slice(0, p)] : [];
-});
+/* ---------- 4. slides：去掉幽靈卡片 ─── 直接用文章陣列 ---------- */
+const slides = computed(() => posts.value ?? []);
 
-/* ---------- 5. 目前顯示的索引 ---------- */
-const current = ref(perView.value);
+/* ---------- 5. 目前起始索引：從 0 開始 ---------- */
+const current = ref(0);
 
-/* ---------- 6. 監聽斷點變更，重置索引並重新量測 ---------- */
+/* ---------- 6. 監聽斷點切換：如果目前索引超出新尾端就回調 ---------- */
 watch(perView, () => {
-  current.value = perView.value;
-  // 斷點切換後要等 DOM 更新再量測
-  nextTick(updateDims);
+  nextTick(() => {
+    updateDims();
+    const lastStart = Math.max(0, slides.value.length - perView.value);
+    if (current.value > lastStart) current.value = lastStart;
+  });
 });
 
-/* ---------- 7. 計算容器尺寸 & 卡片寬度 ---------- */
+/* ---------- 7. 計算尺寸 ---------- */
 function updateDims() {
   winW.value = window.innerWidth;
   if (container.value) {
-    // container.clientWidth 取得外層真實寬度
     slideWidth.value = container.value.clientWidth / perView.value;
   }
 }
 
-/* ---------- 8. Prev / Next 按鈕 & 鍵盤 ---------- */
+/* ---------- 8. Prev / Next（加入邊界判斷） ---------- */
 function next() {
-  current.value++;
+  if (!isLast.value) current.value++;
 }
 function prev() {
-  current.value--;
+  if (!isFirst.value) current.value--;
 }
 function keyHandler(e: KeyboardEvent) {
   if (e.key === "ArrowLeft") prev();
   if (e.key === "ArrowRight") next();
 }
 
-/* ---------- 9. onMounted / onUnmounted ---------- */
+/* ---------- 9. mounted / unmounted ---------- */
 onMounted(() => {
-  // 第一次量測
   updateDims();
-  // 視窗大小改變時重算
   window.addEventListener("resize", updateDims);
-  // 鍵盤左右鍵切換
   window.addEventListener("keydown", keyHandler);
 });
 onUnmounted(() => {
@@ -81,34 +73,36 @@ onUnmounted(() => {
   window.removeEventListener("keydown", keyHandler);
 });
 
-/* ---------- 10. 計算輪播軌道樣式 ---------- */
+/* ---------- 10. 計算軌道位移 ---------- */
 const trackStyle = computed(() => ({
-  // 總寬 = slides.length * 單張卡寬 (px)
   width: `${slides.value.length * slideWidth.value}px`,
-  // 平移距離 = current * 單張卡寬 (px)
   transform: `translateX(-${current.value * slideWidth.value}px)`,
   transition: "transform .5s ease",
 }));
 
-/* ---------- 11. 無縫轉場處理 ---------- */
-function onTransitionEnd() {
-  const p = perView.value;
-  const real = (posts.value ?? []).length;
-  if (current.value < p) current.value = real + p - 1;
-  if (current.value >= real + p) current.value = p;
-}
+/* ---------- 11. 是否在開頭 / 結尾 ── 給按鈕用 ---------- */
+const isFirst = computed(() => current.value === 0);
+const isLast = computed(
+  () => current.value >= slides.value.length - perView.value,
+);
 </script>
 
 <template>
   <div ref="container" class="relative -mx-3 pb-[76px] 2xl:pb-0">
     <button
       class="absolute bottom-0 right-20 z-10 h-[44px] w-[44px] rounded-full opacity-25 shadow transition-all hover:opacity-100 2xl:-left-12 2xl:top-1/2 2xl:-translate-y-1/2"
+      :class="{
+        'pointer-events-none opacity-25 hover:opacity-25': isFirst,
+      }"
       @click="prev"
     >
       <img src="/icon/left-arrow.webp" alt="上一張" />
     </button>
     <button
       class="absolute bottom-0 right-3 z-10 h-[44px] w-[44px] rounded-full opacity-25 shadow transition-all hover:opacity-100 2xl:-right-12 2xl:top-1/2 2xl:-translate-y-1/2"
+      :class="{
+        'pointer-events-none opacity-25 hover:opacity-25': isLast,
+      }"
       @click="next"
     >
       <img src="/icon/right-arrow.webp" alt="下一張" />
@@ -116,7 +110,7 @@ function onTransitionEnd() {
 
     <div class="overflow-hidden">
       <!-- 輪播軌道 -->
-      <ul class="flex" :style="trackStyle" @transitionend="onTransitionEnd">
+      <ul class="flex" :style="trackStyle">
         <li
           v-for="(post, idx) in slides"
           :key="idx"
