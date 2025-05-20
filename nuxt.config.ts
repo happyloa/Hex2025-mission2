@@ -36,7 +36,6 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       "Noto+Sans+TC": [400, 500, 700, 900],
-      "Noto+Serif+TC": [700],
     },
     download: true,
     inject: true,
