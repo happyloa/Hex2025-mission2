@@ -43,4 +43,8 @@ export default defineNuxtConfig({
   },
 
   css: ["~/assets/css/fonts.css"],
+
+  aos: {
+    duration: 750,
+  },
 });

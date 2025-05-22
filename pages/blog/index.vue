@@ -48,7 +48,7 @@ const displayPosts = filteredPosts;
   <CommonHero noIntro title="BLOG" subtitle="前端工程師 & 職涯諮詢師" />
   <CommonHeroBlog />
   <LayoutContainer>
-    <div class="relative mb-10">
+    <div data-aos="fade-up" class="relative mb-10">
       <img
         src="/icon/search.webp"
         alt="搜尋"
@@ -68,7 +68,12 @@ const displayPosts = filteredPosts;
         v-if="displayPosts.length > 0"
         class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-20"
       >
-        <li v-for="post in displayPosts" :key="post.slug">
+        <li
+          v-for="(post, index) in displayPosts"
+          :key="post.slug"
+          data-aos="fade-up"
+          :data-aos-delay="index === 0 ? 0 : index * 50"
+        >
           <NuxtLink :to="post.slug">
             <article class="group">
               <figure class="mb-4 overflow-hidden border border-bgc-dark">

@@ -73,6 +73,7 @@ const nextTo = computed(() =>
       class="prose mx-auto mb-12 max-w-[636px]"
     />
     <nav
+      data-aos="fade-up"
       class="mx-auto flex max-w-[636px] flex-wrap items-center justify-between gap-6 whitespace-nowrap text-fs-6 text-content"
     >
       <NuxtLink

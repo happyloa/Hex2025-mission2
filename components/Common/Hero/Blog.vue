@@ -47,10 +47,14 @@ const latestPost = computed(() => latestArray.value?.[0] ?? null);
       </picture>
     </figure>
     <div class="flex-1 content-center px-3 py-12 lg:px-6 lg:py-0">
-      <time class="mb-1 block text-fs-6">
+      <time data-aos="fade-up" class="mb-1 block text-fs-6">
         {{ new Date(latestPost.date).toLocaleDateString() }}
       </time>
-      <ul class="mb-2 flex flex-wrap items-center gap-y-1">
+      <ul
+        data-aos="fade-up"
+        data-aos-delay="100"
+        class="mb-2 flex flex-wrap items-center gap-y-1"
+      >
         <li
           v-for="(tag, idx) in latestPost.tags"
           :key="idx"
@@ -66,16 +70,24 @@ const latestPost = computed(() => latestArray.value?.[0] ?? null);
         </li>
       </ul>
       <NuxtLink :to="latestPost.slug" class="group block">
-        <h2 class="mb-2 text-fs-3-bold lg:whitespace-nowrap">
+        <h2
+          data-aos="fade-up"
+          data-aos-delay="150"
+          class="mb-2 text-fs-3-bold lg:whitespace-nowrap"
+        >
           {{ latestPost.title }}
         </h2>
         <p
           v-if="!hidePreview"
+          data-aos="fade-up"
+          data-aos-delay="200"
           class="line-clamp | mb-4 text-fs-6 lg:max-w-[636px]"
         >
           {{ latestPost.description }}
         </p>
         <button
+          data-aos="fade-up"
+          data-aos-delay="250"
           v-if="!hidePreview"
           type="button"
           class="rounded-full border border-black px-4 py-2 text-fs-6 text-content transition group-hover:bg-content group-hover:text-white"

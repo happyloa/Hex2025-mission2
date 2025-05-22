@@ -40,10 +40,17 @@ defineProps({
       class="flex-1 content-center bg-[url('/mobile/home/hero-deco.webp')] bg-cover text-blue md:bg-[url('/desktop/home/hero-deco.webp')] lg:px-20 lg:py-0"
       :class="noIntro ? 'p-6' : 'px-6 pb-[200px] pt-6'"
     >
-      <h1 class="mb-3 whitespace-nowrap text-head-1-sm xl:text-head-1">
+      <h1
+        data-aos="fade-up"
+        class="mb-3 whitespace-nowrap text-head-1-sm xl:text-head-1"
+      >
         {{ title }}
       </h1>
-      <p class="break-keep text-fs-3-bold lg:whitespace-nowrap">
+      <p
+        data-aos="fade-up"
+        data-aos-delay="100"
+        class="break-keep text-fs-3-bold lg:whitespace-nowrap"
+      >
         {{ subtitle }}
       </p>
     </div>
