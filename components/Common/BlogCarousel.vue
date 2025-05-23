@@ -126,19 +126,23 @@ const isLast = computed(
 
 <template>
   <div ref="container" class="relative -mx-3 pb-[76px] 2xl:pb-0">
+    <!-- 上一張按鈕 -->
     <button
-      class="absolute bottom-0 right-20 z-10 h-[44px] w-[44px] rounded-full opacity-25 shadow transition-all hover:opacity-100 2xl:-left-12 2xl:top-1/2 2xl:-translate-y-1/2"
+      class="absolute bottom-0 right-20 z-10 h-[44px] w-[44px] rounded-full shadow transition-all 2xl:-left-12 2xl:top-1/2 2xl:-translate-y-1/2"
       :class="{
-        'pointer-events-none opacity-25 hover:opacity-25': isFirst,
+        'pointer-events-none opacity-25': isFirst,
+        'opacity-100': !isFirst,
       }"
       @click="prev"
     >
       <img src="/icon/left-arrow.webp" alt="上一張" />
     </button>
+    <!-- 下一張按鈕 -->
     <button
-      class="absolute bottom-0 right-3 z-10 h-[44px] w-[44px] rounded-full opacity-25 shadow transition-all hover:opacity-100 2xl:-right-12 2xl:top-1/2 2xl:-translate-y-1/2"
+      class="absolute bottom-0 right-3 z-10 h-[44px] w-[44px] rounded-full shadow transition-all 2xl:-right-12 2xl:top-1/2 2xl:-translate-y-1/2"
       :class="{
-        'pointer-events-none opacity-25 hover:opacity-25': isLast,
+        'pointer-events-none opacity-25': isLast,
+        'opacity-100': !isLast,
       }"
       @click="next"
     >
