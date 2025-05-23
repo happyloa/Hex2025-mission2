@@ -154,7 +154,7 @@ useSeoMeta({
       />
     </div>
   </LayoutContainer>
-  <section class="mx-auto flex max-w-[1920px] flex-col xl:flex-row">
+  <section class="mx-auto flex max-w-[1920px] flex-col md:flex-row">
     <figure>
       <picture>
         <source
@@ -164,7 +164,7 @@ useSeoMeta({
         <img
           src="/desktop/home/newsletter-image.webp"
           alt="訂閱電子報人物形象照"
-          class="w-full"
+          class="size-full object-cover"
         />
       </picture>
     </figure>
@@ -178,7 +178,11 @@ useSeoMeta({
         >
           訂閱電子報
         </h2>
-        <p data-aos="fade-up" data-aos-delay="100" class="mb-6 text-fs-5">
+        <p
+          data-aos="fade-up"
+          data-aos-delay="100"
+          class="mb-6 text-fs-5 md:whitespace-nowrap"
+        >
           立即訂閱，搶先掌握<span class="text-blue">前端 x 職涯</span
           >的獨家資訊！
         </p>
