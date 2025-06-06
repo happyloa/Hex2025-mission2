@@ -5,7 +5,7 @@
     <p>© 2025 Alyse Wang. All rights reserved.</p>
     <a href="https://github.com/happyloa/Hex2025-mission2" target="_blank">
       <img
-        src="/public/icon/github-icon.webp"
+        src="/icon/github-icon.webp"
         alt="GitHub repo 連結"
         class="size-12"
       />
