@@ -34,7 +34,7 @@ defineProps({
     <figure>
       <NuxtPicture
         class="w-full"
-        :img-src="`/desktop/home/${image}.webp`"
+        :src="`/desktop/home/${image}.webp`"
         :sources="[
           {
             srcset: `/mobile/home/${image}.webp`,

@@ -75,7 +75,7 @@ useSeoMeta({
         <figure>
           <NuxtPicture
             class="w-full"
-            img-src="/desktop/home/consultation.webp"
+            src="/desktop/home/consultation.webp"
             :sources="[
               {
                 srcset: '/mobile/home/consultation.webp',
@@ -158,7 +158,7 @@ useSeoMeta({
     <figure>
       <NuxtPicture
         class="size-full object-cover"
-        img-src="/desktop/home/newsletter-image.webp"
+        src="/desktop/home/newsletter-image.webp"
         :sources="[
           {
             srcset: '/mobile/home/newsletter-image.webp',

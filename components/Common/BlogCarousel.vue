@@ -172,7 +172,7 @@ const isLast = computed(
               <figure class="mb-4 overflow-hidden border border-bgc-dark">
                 <NuxtPicture
                   class="block aspect-[3/2] w-full object-cover transition-transform duration-300 ease-in-out group-hover:rotate-2 group-hover:scale-110 lg:aspect-[16/9]"
-                  :img-src="post.desktopCover"
+                  :src="post.desktopCover"
                   :sources="[
                     { srcset: post.mobileCover, media: '(max-width:1024px)' },
                   ]"

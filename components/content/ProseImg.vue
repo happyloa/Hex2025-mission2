@@ -20,7 +20,7 @@ const mobileSrc = computed(() => {
   <figure class="mb-6">
     <NuxtPicture
       class="block w-full"
-      :img-src="props.src"
+      :src="props.src"
       :sources="[{ srcset: mobileSrc, media: '(max-width: 768px)' }]"
       :alt="props.alt || ''"
     />

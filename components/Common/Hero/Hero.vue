@@ -26,7 +26,7 @@ defineProps({
     <figure>
       <NuxtPicture
         class="w-full"
-        img-src="/desktop/home/hero-image.webp"
+        src="/desktop/home/hero-image.webp"
         :sources="[
           {
             srcset: '/mobile/home/hero-image.webp',
