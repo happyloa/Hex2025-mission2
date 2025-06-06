@@ -110,7 +110,7 @@ content
 - [Nuxt Google Tag](https://nuxt.com/modules/gtag/)
 - [Nuxt AOS](https://nuxt.com/modules/aos)
 - [Nuxt Image](https://image.nuxtjs.org/)
-- 使用 @nuxt/image-edge 模組最佳化並自動產生不同尺寸的圖片
+- 使用 @nuxt/image-edge 模組最佳化並自動產生不同尺寸的圖片（`ipx` provider 處理本地圖片）
 - [Vue Router](https://router.vuejs.org/)
 - [TinyPNG](https://tinypng.com/)
 - [ChatGPT o4-mini-high](https://openai.com/)
