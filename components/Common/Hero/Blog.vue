@@ -48,7 +48,7 @@ const latestPost = computed(() => latestArray.value?.[0] ?? null);
     </figure>
     <div class="flex-1 content-center px-3 py-12 lg:px-6 lg:py-0">
       <time data-aos="fade-up" class="mb-1 block text-fs-6">
-        {{ new Date(latestPost.date).toLocaleDateString() }}
+        {{ useFormatDate(latestPost.date) }}
       </time>
       <ul
         data-aos="fade-up"
