@@ -37,14 +37,14 @@ const latestPost = computed(() => latestArray.value?.[0] ?? null);
     class="mx-auto flex max-w-[1920px] flex-col border border-secondary lg:flex-row"
   >
     <figure class="overflow-hidden">
-      <picture>
-        <source media="(max-width: 768px)" :srcset="latestPost.mobileCover" />
-        <img
-          :src="latestPost.desktopCover"
-          :alt="latestPost.title + '文章圖片'"
-          class="block w-full transform transition-transform duration-300 ease-in-out hover:rotate-2 hover:scale-110"
-        />
-      </picture>
+      <NuxtPicture
+        class="block w-full transform transition-transform duration-300 ease-in-out hover:rotate-2 hover:scale-110"
+        :img-src="latestPost.desktopCover"
+        :sources="[
+          { srcset: latestPost.mobileCover, media: '(max-width: 768px)' },
+        ]"
+        :alt="latestPost.title + '文章圖片'"
+      />
     </figure>
     <div class="flex-1 content-center px-3 py-12 lg:px-6 lg:py-0">
       <time data-aos="fade-up" class="mb-1 block text-fs-6">

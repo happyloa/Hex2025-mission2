@@ -18,9 +18,11 @@ const mobileSrc = computed(() => {
 
 <template>
   <figure class="mb-6">
-    <picture>
-      <source media="(max-width: 768px)" :srcset="mobileSrc" />
-      <img class="block w-full" :src="props.src" :alt="props.alt || ''" />
-    </picture>
+    <NuxtPicture
+      class="block w-full"
+      :img-src="props.src"
+      :sources="[{ srcset: mobileSrc, media: '(max-width: 768px)' }]"
+      :alt="props.alt || ''"
+    />
   </figure>
 </template>

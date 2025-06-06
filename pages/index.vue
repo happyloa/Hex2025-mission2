@@ -73,17 +73,17 @@ useSeoMeta({
     <div class="relative mb-10">
       <div data-aos="fade-right" class="max-w-[745px] bg-[#EDEDED] p-6">
         <figure>
-          <picture>
-            <source
-              media="(max-width: 768px)"
-              srcset="/mobile/home/consultation.webp"
-            />
-            <img
-              src="/desktop/home/consultation.webp"
-              alt="職涯諮詢成功案例圖片"
-              class="w-full"
-            />
-          </picture>
+          <NuxtPicture
+            class="w-full"
+            img-src="/desktop/home/consultation.webp"
+            :sources="[
+              {
+                srcset: '/mobile/home/consultation.webp',
+                media: '(max-width: 768px)',
+              },
+            ]"
+            alt="職涯諮詢成功案例圖片"
+          />
         </figure>
       </div>
       <div
@@ -156,17 +156,17 @@ useSeoMeta({
   </LayoutContainer>
   <section class="mx-auto flex max-w-[1920px] flex-col md:flex-row">
     <figure>
-      <picture>
-        <source
-          media="(max-width: 768px)"
-          srcset="/mobile/home/newsletter-image.webp"
-        />
-        <img
-          src="/desktop/home/newsletter-image.webp"
-          alt="訂閱電子報人物形象照"
-          class="size-full object-cover"
-        />
-      </picture>
+      <NuxtPicture
+        class="size-full object-cover"
+        img-src="/desktop/home/newsletter-image.webp"
+        :sources="[
+          {
+            srcset: '/mobile/home/newsletter-image.webp',
+            media: '(max-width: 768px)',
+          },
+        ]"
+        alt="訂閱電子報人物形象照"
+      />
     </figure>
     <div
       class="flex-1 content-center bg-[url('/desktop/home/newsletter-deco.webp')] bg-cover p-3 lg:p-20"

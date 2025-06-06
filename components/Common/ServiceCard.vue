@@ -32,17 +32,17 @@ defineProps({
     :class="reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'"
   >
     <figure>
-      <picture>
-        <source
-          media="(max-width: 1024px)"
-          :srcset="`/mobile/home/${image}.webp`"
-        />
-        <img
-          :src="`/desktop/home/${image}.webp`"
-          :alt="`${title}圖片`"
-          class="w-full"
-        />
-      </picture>
+      <NuxtPicture
+        class="w-full"
+        :img-src="`/desktop/home/${image}.webp`"
+        :sources="[
+          {
+            srcset: `/mobile/home/${image}.webp`,
+            media: '(max-width: 1024px)',
+          },
+        ]"
+        :alt="`${title}圖片`"
+      />
     </figure>
     <div
       class="top-1/2 w-full bg-white p-6 lg:absolute lg:max-w-[480px] lg:-translate-y-1/2"

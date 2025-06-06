@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
-  devtools: { enabled: true },
+  devtools: { enabled: process.env.NODE_ENV !== "production" },
 
   // 網站 meta 設定
   app: {
@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
     "@nuxt/content",
+    "@nuxt/image-edge",
     "nuxt-gtag",
     "nuxt-aos",
   ],
@@ -39,5 +40,13 @@ export default defineNuxtConfig({
 
   aos: {
     duration: 750,
+  },
+
+  image: {
+    provider: "static",
+  },
+
+  nitro: {
+    compressPublicAssets: true,
   },
 });

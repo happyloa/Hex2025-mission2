@@ -24,17 +24,17 @@ defineProps({
 <template>
   <section class="mx-auto flex max-w-[1920px] flex-col lg:flex-row">
     <figure>
-      <picture>
-        <source
-          media="(max-width: 640px)"
-          srcset="/mobile/home/hero-image.webp"
-        />
-        <img
-          src="/desktop/home/hero-image.webp"
-          alt="人物形象照"
-          class="w-full"
-        />
-      </picture>
+      <NuxtPicture
+        class="w-full"
+        img-src="/desktop/home/hero-image.webp"
+        :sources="[
+          {
+            srcset: '/mobile/home/hero-image.webp',
+            media: '(max-width: 640px)',
+          },
+        ]"
+        alt="人物形象照"
+      />
     </figure>
     <div
       class="flex-1 content-center bg-[url('/mobile/home/hero-deco.webp')] bg-cover text-blue md:bg-[url('/desktop/home/hero-deco.webp')] lg:px-20 lg:py-0"
