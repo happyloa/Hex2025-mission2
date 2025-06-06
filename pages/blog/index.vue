@@ -90,7 +90,7 @@ const displayPosts = filteredPosts;
                 </picture>
               </figure>
               <time class="mb-1 text-fs-6">
-                {{ new Date(post.date).toLocaleDateString() }}
+                {{ useFormatDate(post.date) }}
               </time>
               <ul class="flex flex-wrap gap-x-2 gap-y-1">
                 <li

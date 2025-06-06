@@ -10,14 +10,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "zh-Hant",
       },
-      script: [
-        {
-          src: "//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js",
-          type: "text/javascript",
-          async: true,
-          defer: true,
-        },
-      ],
+      script: [],
     },
   },
   modules: [

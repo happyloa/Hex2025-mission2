@@ -183,9 +183,7 @@ const isLast = computed(
                 </picture>
               </figure>
 
-              <time class="mb-1 text-fs-6">{{
-                new Date(post.date).toLocaleDateString()
-              }}</time>
+              <time class="mb-1 text-fs-6">{{ useFormatDate(post.date) }}</time>
               <ul class="mb-1 flex flex-wrap gap-x-2 gap-y-1">
                 <li v-for="t in post.tags" :key="t" class="text-fs-4 text-blue">
                   #{{ t }}
