@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     families: {
       "Noto+Sans+TC": [400, 500, 700, 900],
     },
-    download: true,
+    download: false,
     inject: true,
     display: "swap",
   },
@@ -43,7 +43,7 @@ export default defineNuxtConfig({
   },
 
   image: {
-    provider: "ipx",
+    provider: "vercel",
   },
 
   nitro: {
