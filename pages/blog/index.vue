@@ -53,6 +53,7 @@ const displayPosts = filteredPosts;
         src="/icon/search.webp"
         alt="搜尋"
         class="absolute left-4 top-1/2 -translate-y-1/2"
+        loading="lazy"
       />
       <input
         v-model="searchTerm"
@@ -86,6 +87,7 @@ const displayPosts = filteredPosts;
                     :src="post.desktopCover"
                     :alt="post.title + '文章圖片'"
                     class="block w-full transform transition-transform duration-300 ease-in-out group-hover:rotate-2 group-hover:scale-110"
+                    loading="lazy"
                   />
                 </picture>
               </figure>
@@ -128,7 +130,7 @@ const displayPosts = filteredPosts;
     <nav class="mx-auto max-w-[328px] rounded-full bg-white px-5 py-4">
       <ul class="flex justify-between text-center text-fs-6 text-content">
         <li>
-          <img src="/icon/prev.webp" alt="上一頁" class="cursor-pointer" />
+          <img src="/icon/prev.webp" alt="上一頁" class="cursor-pointer" loading="lazy" />
         </li>
         <li class="w-10 cursor-pointer">1</li>
         <li class="w-10 cursor-pointer">2</li>
@@ -137,7 +139,7 @@ const displayPosts = filteredPosts;
         <li class="w-10 cursor-pointer">5</li>
         <li class="w-10 cursor-pointer">...</li>
         <li>
-          <img src="/icon/next.webp" alt="下一頁" class="cursor-pointer" />
+          <img src="/icon/next.webp" alt="下一頁" class="cursor-pointer" loading="lazy" />
         </li>
       </ul>
     </nav>

@@ -41,6 +41,7 @@ defineProps({
           :src="`/desktop/home/${image}.webp`"
           :alt="`${title}圖片`"
           class="w-full"
+          loading="lazy"
         />
       </picture>
     </figure>
@@ -48,7 +49,7 @@ defineProps({
       class="top-1/2 w-full bg-white p-6 lg:absolute lg:max-w-[480px] lg:-translate-y-1/2"
       :class="reverse ? 'left-0' : 'right-0'"
     >
-      <img src="/icon/dash.png" alt="裝飾線條" />
+      <img src="/icon/dash.png" alt="裝飾線條" loading="lazy" />
       <h3 class="mb-2 text-fs-3-bold">{{ title }}</h3>
       <p class="text-fs-6 text-content">
         {{ description }}

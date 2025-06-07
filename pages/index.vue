@@ -55,7 +55,7 @@ useSeoMeta({
       >
         <p class="text-center text-fs-3-bold">聯繫我，取得更多資訊！</p>
         <a href="#" target="_blank" class="transition-all hover:translate-x-1"
-          ><img src="/icon/contact-me.webp" alt="聯繫我"
+          ><img src="/icon/contact-me.webp" alt="聯繫我" loading="lazy"
         /></a>
       </div>
     </div>
@@ -82,6 +82,7 @@ useSeoMeta({
               src="/desktop/home/consultation.webp"
               alt="職涯諮詢成功案例圖片"
               class="w-full"
+              loading="lazy"
             />
           </picture>
         </figure>
@@ -94,7 +95,7 @@ useSeoMeta({
           data-aos="flip-right"
           class="right-[219px] top-0 bg-white px-6 py-10 md:absolute md:w-[526px] md:px-10 md:py-20"
         >
-          <img src="/icon/dash.png" alt="裝飾線條" class="mb-6" />
+          <img src="/icon/dash.png" alt="裝飾線條" class="mb-6" loading="lazy" />
           <p class="text-fs-6-bold">
             在職涯發展的關鍵轉折點上，適時的協助與正確的方向至關重要。藉由職涯諮詢，我可以幫助你加速釐清目標、建立更全面的技術與軟實力，並有效<span
               class="text-blue"
@@ -108,7 +109,7 @@ useSeoMeta({
           data-aos-delay="100"
           class="bottom-0 right-0 bg-[#F5F5F5] px-6 py-10 md:absolute md:w-[526px] md:px-10 md:py-20"
         >
-          <img src="/icon/dash.png" alt="裝飾線條" class="mb-6" />
+          <img src="/icon/dash.png" alt="裝飾線條" class="mb-6" loading="lazy" />
           <p class="mb-6 text-fs-6-bold">
             期待在下一個新機會中，我能與你一起攜手邁向更高峰！
           </p>
@@ -165,6 +166,7 @@ useSeoMeta({
           src="/desktop/home/newsletter-image.webp"
           alt="訂閱電子報人物形象照"
           class="size-full object-cover"
+          loading="lazy"
         />
       </picture>
     </figure>
@@ -247,7 +249,7 @@ useSeoMeta({
             >
             <span class="lg:text-fs-3">合作洽談</span>
           </div>
-          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" />
+          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" loading="lazy" />
         </a>
       </li>
       <li data-aos="fade-right" data-aos-delay="100">
@@ -257,10 +259,10 @@ useSeoMeta({
           class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-black py-4"
         >
           <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <img src="/icon/youtube.webp" alt="youtube icon" />
+            <img src="/icon/youtube.webp" alt="youtube icon" loading="lazy" />
             <span class="lg:text-fs-3">Youtube 職涯諮詢室</span>
           </div>
-          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" />
+          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" loading="lazy" />
         </a>
       </li>
       <li data-aos="fade-right" data-aos-delay="200">
@@ -270,10 +272,10 @@ useSeoMeta({
           class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-black py-4"
         >
           <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <img src="/icon/podcast.webp" alt="podcast icon" />
+            <img src="/icon/podcast.webp" alt="podcast icon" loading="lazy" />
             <span class="lg:text-fs-3">podcast 職涯諮詢室</span>
           </div>
-          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" />
+          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" loading="lazy" />
         </a>
       </li>
       <li data-aos="fade-right" data-aos-delay="300">
@@ -283,10 +285,10 @@ useSeoMeta({
           class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-black py-4"
         >
           <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <img src="/icon/facebook.webp" alt="facebook icon" />
+            <img src="/icon/facebook.webp" alt="facebook icon" loading="lazy" />
             <span class="lg:text-fs-3">Facebook 前端社群</span>
           </div>
-          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" />
+          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" loading="lazy" />
         </a>
       </li>
       <li data-aos="fade-right" data-aos-delay="400">
@@ -296,10 +298,10 @@ useSeoMeta({
           class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-black py-4"
         >
           <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <img src="/icon/linkedin.webp" alt="linkedin icon" />
+            <img src="/icon/linkedin.webp" alt="linkedin icon" loading="lazy" />
             <span class="lg:text-fs-3">linkedin 職涯交流</span>
           </div>
-          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" />
+          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" loading="lazy" />
         </a>
       </li>
       <li data-aos="fade-right" data-aos-delay="500">
@@ -309,10 +311,10 @@ useSeoMeta({
           class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-black py-4"
         >
           <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <img src="/icon/instagram.webp" alt="instagram icon" />
+            <img src="/icon/instagram.webp" alt="instagram icon" loading="lazy" />
             <span class="lg:text-fs-3">Instagram 日常分享</span>
           </div>
-          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" />
+          <img src="/icon/arrow-right.webp" alt="聯繫我" class="h-6 w-6" loading="lazy" />
         </a>
       </li>
     </ul>

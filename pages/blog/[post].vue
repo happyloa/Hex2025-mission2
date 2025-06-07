@@ -81,7 +81,7 @@ const nextTo = computed(() =>
         class="flex items-center gap-1 rounded-full border border-black px-4 py-2 transition-all hover:-translate-x-1"
         :class="prevDisabled ? 'pointer-events-none opacity-25' : ''"
       >
-        <img src="/icon/prev.webp" alt="箭頭 icon" />
+        <img src="/icon/prev.webp" alt="箭頭 icon" loading="lazy" />
         上一篇
       </NuxtLink>
       <NuxtLink
@@ -90,7 +90,7 @@ const nextTo = computed(() =>
         :class="nextDisabled ? 'pointer-events-none opacity-25' : ''"
       >
         下一篇
-        <img src="/icon/next.webp" alt="箭頭 icon" />
+        <img src="/icon/next.webp" alt="箭頭 icon" loading="lazy" />
       </NuxtLink>
     </nav>
   </section>

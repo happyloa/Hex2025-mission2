@@ -43,6 +43,7 @@ const latestPost = computed(() => latestArray.value?.[0] ?? null);
           :src="latestPost.desktopCover"
           :alt="latestPost.title + '文章圖片'"
           class="block w-full transform transition-transform duration-300 ease-in-out hover:rotate-2 hover:scale-110"
+          loading="lazy"
         />
       </picture>
     </figure>
