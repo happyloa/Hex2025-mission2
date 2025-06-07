@@ -20,7 +20,7 @@ const mobileSrc = computed(() => {
   <figure class="mb-6">
     <picture>
       <source media="(max-width: 768px)" :srcset="mobileSrc" />
-      <img class="block w-full" :src="props.src" :alt="props.alt || ''" />
+      <img class="block w-full" loading="lazy" :src="props.src" :alt="props.alt || ''" />
     </picture>
   </figure>
 </template>

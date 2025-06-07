@@ -135,7 +135,7 @@ const isLast = computed(
       }"
       @click="prev"
     >
-      <img src="/icon/left-arrow.webp" alt="上一張" />
+      <img src="/icon/left-arrow.webp" alt="上一張" loading="lazy" />
     </button>
     <!-- 下一張按鈕 -->
     <button
@@ -146,7 +146,7 @@ const isLast = computed(
       }"
       @click="next"
     >
-      <img src="/icon/right-arrow.webp" alt="下一張" />
+      <img src="/icon/right-arrow.webp" alt="下一張" loading="lazy" />
     </button>
 
     <div class="overflow-hidden">
@@ -179,6 +179,7 @@ const isLast = computed(
                     :src="post.desktopCover"
                     :alt="post.title + ' 文章圖片'"
                     class="block aspect-[3/2] w-full object-cover transition-transform duration-300 ease-in-out group-hover:rotate-2 group-hover:scale-110 lg:aspect-[16/9]"
+                    loading="lazy"
                   />
                 </picture>
               </figure>

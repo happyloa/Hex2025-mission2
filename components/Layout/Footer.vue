@@ -8,6 +8,7 @@
         src="/icon/github-icon.webp"
         alt="GitHub repo 連結"
         class="size-12"
+        loading="lazy"
       />
     </a>
   </footer>

@@ -33,6 +33,7 @@ defineProps({
           src="/desktop/home/hero-image.webp"
           alt="人物形象照"
           class="w-full"
+          loading="lazy"
         />
       </picture>
     </figure>
