@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
     "@nuxt/content",
+    "nuxt-clarity-analytics",
     "nuxt-gtag",
     "nuxt-aos",
   ],
@@ -39,5 +40,9 @@ export default defineNuxtConfig({
 
   aos: {
     duration: 750,
+  },
+
+  runtimeConfig: {
+    clarityId: process.env.NUXT_CLARITY_ID || "",
   },
 });
