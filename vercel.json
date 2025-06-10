@@ -23,7 +23,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-        "value": "default-src 'self' https: data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://s3.amazonaws.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://www.google-analytics.com https://www.clarity.ms; img-src 'self' data: https:; object-src 'none'; frame-src https://*.mailchimp.com https://vercel.live;"
+        "value": "default-src 'self' https: data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://s3.amazonaws.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self' https://www.google-analytics.com https://www.clarity.ms wss://www.clarity.ms; img-src 'self' data: https:; object-src 'none'; frame-src https://*.mailchimp.com https://vercel.live https://www.clarity.ms;"
         },
         {
           "key": "X-Frame-Options",
