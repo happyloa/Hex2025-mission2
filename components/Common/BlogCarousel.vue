@@ -64,36 +64,74 @@ function keyHandler(e: KeyboardEvent) {
 }
 
 /* ---------- 9. 拖曳狀態 ---------- */
-const isDragging = ref(false); // 目前是否在拖曳
-const startX = ref(0); // pointerdown 的 x 位置
-const dragDelta = ref(0); // 即時位移
-const enableTran = ref(true); // 是否啟用 transition
+const isDragging = ref(false);
+const startX = ref(0);
+const dragDelta = ref(0);
+const enableTran = ref(true);
+
+const movedEnough = ref(false); // 達到拖曳門檻？
+const suppressOneClick = ref(false); // 吞掉下一個 click（僅拖曳後）
+let clickSuppressPx = 6;
+const capturedId = ref<number | null>(null); // 目前是否有 capture
 
 function onPointerDown(e: PointerEvent) {
   isDragging.value = true;
   startX.value = e.clientX;
   dragDelta.value = 0;
-  enableTran.value = false; // 拖曳時關閉動畫
-  (e.target as HTMLElement).setPointerCapture(e.pointerId);
+  movedEnough.value = false;
+  enableTran.value = false;
+  clickSuppressPx = e.pointerType === "mouse" ? 8 : 14;
+  capturedId.value = null;
 }
+
 function onPointerMove(e: PointerEvent) {
   if (!isDragging.value) return;
   dragDelta.value = e.clientX - startX.value;
+
+  // 一旦判定為拖曳，這時才開始 capture，確保之後 move/up 都穩定送到軌道
+  if (!movedEnough.value && Math.abs(dragDelta.value) >= clickSuppressPx) {
+    movedEnough.value = true;
+    if (capturedId.value == null) {
+      trackRef.value?.setPointerCapture(e.pointerId);
+      capturedId.value = e.pointerId;
+    }
+  }
 }
+
 function onPointerUp(e: PointerEvent) {
   if (!isDragging.value) return;
   isDragging.value = false;
-  enableTran.value = true; // 結束後恢復動畫
+  enableTran.value = true;
 
-  // 若拖曳距離超過 1/4 slide 寬 → 切換
   const threshold = slideWidth.value / 4;
   if (dragDelta.value > threshold && !isFirst.value) {
     prev();
   } else if (dragDelta.value < -threshold && !isLast.value) {
     next();
   }
-  dragDelta.value = 0; // 重設位移
-  (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+
+  dragDelta.value = 0;
+
+  // 只有在真的有 capture 時才釋放
+  if (capturedId.value != null) {
+    try {
+      trackRef.value?.releasePointerCapture(capturedId.value);
+    } catch {}
+    capturedId.value = null;
+  }
+
+  // 有拖曳過 → 吞掉接下來的一次 click；沒拖曳 → 不動它，讓連結正常導頁
+  if (movedEnough.value) suppressOneClick.value = true;
+  movedEnough.value = false;
+}
+
+// 維持你目前的 onCardClick（掛在 NuxtLink 上）
+function onCardClick(e: MouseEvent) {
+  if (suppressOneClick.value) {
+    e.preventDefault();
+    e.stopPropagation();
+    suppressOneClick.value = false;
+  }
 }
 
 /* ---------- 10. mounted / unmounted ---------- */
@@ -153,13 +191,14 @@ const isLast = computed(
       <!-- 輪播軌道 -->
       <ul
         ref="trackRef"
-        class="flex select-none"
+        class="flex cursor-grab select-none active:cursor-grabbing"
         :style="trackStyle"
         @pointerdown="onPointerDown"
         @pointermove="onPointerMove"
         @pointerup="onPointerUp"
         @pointercancel="onPointerUp"
         @pointerleave="onPointerUp"
+        style="touch-action: pan-y"
       >
         <li
           v-for="(post, idx) in slides"
@@ -167,19 +206,25 @@ const isLast = computed(
           class="shrink-0 px-3"
           :style="{ flex: '0 0 auto', width: slideWidth + 'px' }"
         >
-          <NuxtLink :to="post.slug">
-            <article class="group relative">
-              <figure class="mb-4 overflow-hidden border border-bgc-dark">
-                <picture>
+          <NuxtLink :to="post.slug" draggable="false" @click="onCardClick">
+            <article class="group relative" draggable="false">
+              <figure
+                class="mb-4 overflow-hidden border border-bgc-dark"
+                draggable="false"
+              >
+                <picture draggable="false">
                   <source
                     media="(max-width:1024px)"
                     :srcset="post.mobileCover"
+                    draggable="false"
                   />
                   <img
                     :src="post.desktopCover"
                     :alt="post.title + ' 文章圖片'"
                     class="block aspect-[3/2] w-full object-cover transition-transform duration-300 ease-in-out group-hover:rotate-2 group-hover:scale-110 lg:aspect-[16/9]"
                     loading="lazy"
+                    draggable="false"
+                    @dragstart.prevent
                   />
                 </picture>
               </figure>
@@ -209,6 +254,7 @@ const isLast = computed(
               <button
                 type="button"
                 class="rounded-full border border-black px-4 py-2 text-fs-6 text-content transition group-hover:bg-content group-hover:text-white"
+                draggable="false"
               >
                 閱讀內文
               </button>
