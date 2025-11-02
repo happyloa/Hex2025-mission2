@@ -1,11 +1,19 @@
 <script setup>
 const route = useRoute();
 
+definePageMeta({
+  key: (currentRoute) => currentRoute.path,
+});
+
 // 用 useAsyncData + queryCollection 拿單篇文章
 //   - .path() 直接過濾 collection 裡 path 等於 route.path 的文件
 //   - .first() 把結果回傳成一個物件而不是陣列
-const { data: post } = await useAsyncData(`${route.path}`, () =>
-  queryCollection("blog").path(route.path).first(),
+const { data: post } = await useAsyncData(
+  `post-${route.path}`,
+  () => queryCollection("blog").path(route.path).first(),
+  {
+    watch: [() => route.path],
+  },
 );
 
 useSeoMeta({
@@ -17,46 +25,33 @@ useSeoMeta({
   twitterCard: "/ogImage.webp",
 });
 
-// 拿所有文章的 slug，依 date DESC 排序
-const { data: posts } = await useAsyncData("posts", () =>
-  queryCollection("blog").select("slug").order("date", "DESC").all(),
+// 只抓取相鄰的上下篇，避免每次進入文章都要讀完整清單
+const { data: surroundings } = await useAsyncData(
+  `surroundings-${route.path}`,
+  () =>
+    queryCollectionItemSurroundings("blog", route.path, {
+      fields: ["slug"],
+    })
+      .order("date", "DESC"),
+  {
+    default: () => [],
+    watch: [() => route.path],
+  },
 );
 
-// 計算出路徑陣列
-const paths = computed(() => {
-  return posts.value ? posts.value.map((item) => item.slug) : [];
-});
-
-// 找到當前文章在陣列中的索引
-const currentIndex = computed(() =>
-  paths.value.findIndex((p) => p === route.path),
-);
-
-// 是否存在「上一篇」（較新的文章）
-const hasPrev = computed(
-  () => currentIndex.value >= 0 && currentIndex.value < paths.value.length - 1,
-);
-// 是否存在「下一篇」（較舊的文章）
-const hasNext = computed(() => currentIndex.value > 0);
-
-// 計算前後連結路徑
-const prevPath = computed(() =>
-  hasPrev.value ? paths.value[currentIndex.value + 1] : "",
-);
-const nextPath = computed(() =>
-  hasNext.value ? paths.value[currentIndex.value - 1] : "",
-);
+const prevItem = computed(() => surroundings.value?.[0] ?? null);
+const nextItem = computed(() => surroundings.value?.[1] ?? null);
 
 // 依既有 hasPrev / hasNext 推導是否停用（＝顯示但不可點）
-const prevDisabled = computed(() => !hasPrev.value); // 沒有「上一篇」=> 停用左邊按鈕
-const nextDisabled = computed(() => !hasNext.value); // 沒有「下一篇」=> 停用右邊按鈕
+const prevDisabled = computed(() => !prevItem.value);
+const nextDisabled = computed(() => !nextItem.value);
 
 // 停用時 fallback 到本頁，避免死連結
 const prevTo = computed(() =>
-  prevDisabled.value ? route.path : prevPath.value,
+  prevItem.value?.slug ?? prevItem.value?.path ?? route.path,
 );
 const nextTo = computed(() =>
-  nextDisabled.value ? route.path : nextPath.value,
+  nextItem.value?.slug ?? nextItem.value?.path ?? route.path,
 );
 </script>
 
@@ -78,6 +73,7 @@ const nextTo = computed(() =>
     >
       <NuxtLink
         :to="prevTo"
+        prefetch
         class="flex items-center gap-1 rounded-full border border-black px-4 py-2 transition-all hover:-translate-x-1"
         :class="prevDisabled ? 'pointer-events-none opacity-25' : ''"
       >
@@ -86,6 +82,7 @@ const nextTo = computed(() =>
       </NuxtLink>
       <NuxtLink
         :to="nextTo"
+        prefetch
         class="flex items-center gap-1 rounded-full border border-black px-4 py-2 transition-all hover:translate-x-1"
         :class="nextDisabled ? 'pointer-events-none opacity-25' : ''"
       >
