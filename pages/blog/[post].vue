@@ -25,22 +25,36 @@ useSeoMeta({
   twitterCard: "/ogImage.webp",
 });
 
-// 只抓取相鄰的上下篇，避免每次進入文章都要讀完整清單
-const { data: surroundings } = await useAsyncData(
-  `surroundings-${route.path}`,
+// 抓取所有文章列表，依日期由新到舊排序，用於計算上一篇 / 下一篇
+const { data: postList } = await useAsyncData(
+  "post-surroundings",
   () =>
-    queryCollectionItemSurroundings("blog", route.path, {
-      fields: ["slug"],
-    })
-      .order("date", "DESC"),
+    queryCollection("blog")
+      .select("slug", "path", "date")
+      .order("date", "DESC")
+      .all(),
   {
     default: () => [],
-    watch: [() => route.path],
   },
 );
 
-const prevItem = computed(() => surroundings.value?.[0] ?? null);
-const nextItem = computed(() => surroundings.value?.[1] ?? null);
+const currentIndex = computed(() =>
+  (postList.value ?? []).findIndex(
+    (item) => item.slug === route.path || item.path === route.path,
+  ),
+);
+
+const prevItem = computed(() => {
+  const index = currentIndex.value;
+  if (index === -1) return null;
+  return postList.value?.[index + 1] ?? null;
+});
+
+const nextItem = computed(() => {
+  const index = currentIndex.value;
+  if (index <= 0) return null;
+  return postList.value?.[index - 1] ?? null;
+});
 
 // 依既有 hasPrev / hasNext 推導是否停用（＝顯示但不可點）
 const prevDisabled = computed(() => !prevItem.value);
