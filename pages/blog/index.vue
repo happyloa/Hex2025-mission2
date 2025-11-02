@@ -75,7 +75,7 @@ const displayPosts = filteredPosts;
           data-aos="fade-up"
           :data-aos-delay="index === 0 ? 0 : index * 50"
         >
-          <NuxtLink :to="post.slug">
+          <NuxtLink :to="post.slug" prefetch>
             <article class="group">
               <figure class="mb-4 overflow-hidden border border-bgc-dark">
                 <picture>

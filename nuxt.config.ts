@@ -40,6 +40,9 @@ export default defineNuxtConfig({
 
   aos: {
     duration: 750,
+    offset: 0,
+    easing: "ease-out-quart",
+    once: true,
   },
 
   runtimeConfig: {
