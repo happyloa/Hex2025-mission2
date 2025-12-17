@@ -27,6 +27,7 @@ defineProps({
 </script>
 
 <template>
+  <!-- 服務卡片：切換左右配置展示每項服務內容 -->
   <article
     class="relative flex flex-col"
     :class="reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'"

@@ -33,6 +33,7 @@ const latestPost = computed(() => latestArray.value?.[0] ?? null);
 </script>
 
 <template>
+  <!-- 部落格主視覺：拉出最新一篇文章並顯示封面與摘要 -->
   <section
     class="mx-auto flex max-w-[1920px] flex-col border border-secondary lg:flex-row"
   >

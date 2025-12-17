@@ -17,6 +17,7 @@ const mobileSrc = computed(() => {
 </script>
 
 <template>
+  <!-- 文章圖片：提供桌機與行動版切換的圖片來源 -->
   <figure class="mb-6">
     <picture>
       <source media="(max-width: 768px)" :srcset="mobileSrc" />

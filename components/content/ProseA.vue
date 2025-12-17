@@ -7,6 +7,7 @@ const props = defineProps<{
 </script>
 
 <template>
+  <!-- 文章連結：依據內外部連結自動切換 NuxtLink 或 <a> -->
   <!-- 如果 href 是以 "/" 開頭，就當成內部路由，使用 NuxtLink -->
   <NuxtLink
     v-if="props.href.startsWith('/')"

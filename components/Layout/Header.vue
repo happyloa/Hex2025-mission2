@@ -1,4 +1,5 @@
 <template>
+  <!-- 導覽列：固定於頂部並切換首頁與部落格連結高亮 -->
   <header class="sticky top-0 z-50 mx-auto max-w-[1920px] bg-bgc py-6">
     <nav>
       <ul class="flex flex-wrap justify-center gap-x-10 gap-y-2 text-fs-3-bold">

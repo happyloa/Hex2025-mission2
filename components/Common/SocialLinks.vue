@@ -1,4 +1,5 @@
 <template>
+  <!-- 聯絡橫幅：放置聯絡信箱與社群快捷入口 -->
   <section
     class="mx-auto hidden max-w-[1920px] overflow-hidden bg-bgc px-3 py-20 md:block"
   >

@@ -1,4 +1,5 @@
 <template>
+  <!-- 全站頁尾：顯示版權資訊與 GitHub 入口 -->
   <footer
     class="mx-auto flex max-w-[1920px] flex-col items-center gap-2 bg-white px-10 py-6 text-center text-fs-6"
   >

@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     families: {
       "Noto+Sans+TC": [400, 500, 700, 900],
     },
-    download: true,
+    download: process.env.NUXT_GOOGLE_FONTS_DOWNLOAD !== "false",
     inject: true,
     display: "swap",
   },

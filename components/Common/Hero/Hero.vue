@@ -22,6 +22,7 @@ defineProps({
 </script>
 
 <template>
+  <!-- 首屏橫幅：呈現個人品牌標題與代表圖 -->
   <section class="mx-auto flex max-w-[1920px] flex-col lg:flex-row">
     <figure>
       <picture>
