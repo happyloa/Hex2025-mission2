@@ -22,6 +22,7 @@ defineProps({
 </script>
 
 <template>
+  <!-- 成功案例卡片：呈現客戶頭像、重點清單與導流按鈕 -->
   <article>
     <img :src="`/avatar/${image}.webp`" alt="客戶圖片" class="mb-4" loading="lazy" />
     <h3 class="mb-2 text-fs-4-bold">{{ title }}</h3>

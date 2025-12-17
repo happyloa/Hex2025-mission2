@@ -163,6 +163,7 @@ const isLast = computed(
 </script>
 
 <template>
+  <!-- 文章輪播：滑動瀏覽近期文章並支援拖曳操作 -->
   <div ref="container" class="relative -mx-3 pb-[76px] 2xl:pb-0">
     <!-- 上一張按鈕 -->
     <button

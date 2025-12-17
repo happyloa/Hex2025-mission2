@@ -9,7 +9,7 @@
 
 ## 使用技術
 
-- [Nuxt 4.2](https://nuxt.com/)（Vue 加強版）
+- [Nuxt 4.2.2](https://nuxt.com/)（Vue 加強版，對應 Vue 3.5.25）
 - [Tailwind CSS](https://tailwindcss.com/)
 
 ## 開發環境設置
@@ -36,6 +36,8 @@ $ git clone https://github.com/happyloa/Hex2025-mission2.git
 $ cd Hex2025-mission2
 $ npm install
 ```
+
+> 如果公司防火牆阻擋 Google Fonts 下載，可改用 `NUXT_GOOGLE_FONTS_DOWNLOAD=false npm install` 與同樣的環境變數執行建置，以跳過字體下載流程。
 
 **執行專案（Start the server）**
 
@@ -104,14 +106,14 @@ content
 
 ## 使用的套件 & 工具
 
-- [Nuxt Content 3.8](https://content.nuxt.com/)
+- [Nuxt Content 3.9](https://content.nuxt.com/)
 - [Nuxt Google Fonts](https://google-fonts.nuxtjs.org/)
 - [Nuxt Tailwind 6.14](https://tailwindcss.nuxtjs.org/)
 - [Nuxt Google Tag 4.1](https://nuxt.com/modules/gtag/)
 - [Nuxt Clarity Analytics](https://npm.im/nuxt-clarity-analytics)
 - [Nuxt AOS 1.2](https://nuxt.com/modules/aos)
-- [Vue Router 4.6](https://router.vuejs.org/)
-- [better-sqlite3 12](https://github.com/WiseLibs/better-sqlite3)
+- [Vue Router 4.6.4](https://router.vuejs.org/)
+- [better-sqlite3 12.5](https://github.com/WiseLibs/better-sqlite3)
 - [TinyPNG](https://tinypng.com/)
 - [ChatGPT o4-mini-high](https://openai.com/)
 

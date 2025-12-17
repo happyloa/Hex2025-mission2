@@ -1,4 +1,5 @@
 <template>
+  <!-- 社群連結列：集中管理所有社群網站的導向按鈕 -->
   <ul class="flex gap-1">
     <li class="transition-all hover:-translate-y-1">
       <a href="#" target="_blank"

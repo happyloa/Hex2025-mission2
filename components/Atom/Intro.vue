@@ -1,4 +1,5 @@
 <template>
+  <!-- 介紹模組：放在主視覺右側的自我介紹文字區塊 -->
   <div
     class="absolute -top-40 right-0 mx-3 flex flex-col gap-4 bg-white px-6 py-10 text-fs-4 md:max-w-[1077px] md:px-10 md:py-20 md:text-fs-3 xl:right-20"
   >
