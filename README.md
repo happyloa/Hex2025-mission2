@@ -9,8 +9,8 @@
 
 ## 使用技術
 
-- [Nuxt 4.2.2](https://nuxt.com/)（Vue 加強版，對應 Vue 3.5.25）
-- [Tailwind CSS](https://tailwindcss.com/)
+- [Nuxt 4.5.2](https://nuxt.com/)（Vue 加強版，對應 Vue 3.5.43）
+- [Tailwind CSS 4.3.3](https://tailwindcss.com/)，透過官方 Vite 插件整合
 
 ## 開發環境設置
 
@@ -21,6 +21,8 @@
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
 ## 快速開始
+
+請使用 Node.js 22.19.0 以上的 22.x、24.11.0 以上的 24.x，或 26.x 以上版本；npm 至少需要 11.21.0。建議使用 npm 12.2.0，搭配 Node.js 22.22.2 以上、24.15.0 以上或 26.x 以上版本。
 
 **專案設置（Project setup）**
 
@@ -37,7 +39,7 @@ $ cd Hex2025-mission2
 $ npm install
 ```
 
-> 如果公司防火牆阻擋 Google Fonts 下載，可改用 `NUXT_GOOGLE_FONTS_DOWNLOAD=false npm install` 與同樣的環境變數執行建置，以跳過字體下載流程。
+> 如果公司防火牆阻擋 Google Fonts 下載，可改用 `NUXT_GOOGLE_FONTS_DOWNLOAD=false npm install` 與同樣的環境變數執行建置。此設定會改由瀏覽器載入 Google Fonts；瀏覽器也無法連線時，會使用系統備援字型。
 
 **執行專案（Start the server）**
 
@@ -52,6 +54,25 @@ http://localhost:3000/
 ```
 
 即可在本地端預覽專案
+
+驗證更新時，依序執行：
+
+```sh
+npm ci
+npm run check:format
+npm run typecheck
+npm run build
+npm outdated
+npm audit
+```
+
+npm 11.21.0 以上支援 `package.json` 的 `allowScripts`，目前只允許已檢查的 esbuild 版本執行安裝腳本。better-sqlite3 13 已包含預編譯檔，清單明確拒絕其安裝腳本，避免 npm 11 推導出不必要的 `node-gyp rebuild`。升級後可執行 `npm install-scripts ls` 檢查新出現的腳本，再逐項核准；請保留 better-sqlite3 的拒絕設定。
+
+型別檢查使用 Microsoft 官方 `@typescript/typescript6` 相容套件，透過 npm alias 提供 `typescript`。vue-tsc 目前仍需 TypeScript 6 的 JavaScript 編譯器介面。
+
+截至 2026/10/03，npm audit 仍會列出 12 項高風險相依項目，根源是尚無修補版的 [braces 深層巢狀 pattern 漏洞](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) 與 [node-forge RSA 簽章驗證漏洞](https://github.com/advisories/GHSA-86w9-cpqp-85rv)。Nuxt、Nuxt Content 和 Nitro 仍依賴這些套件。`npm audit fix --force` 建議降級到舊版 Nuxt 與 Content，無法作為本次升級的修復方式；待上游發布修補版本後需再次更新與驗證。
+
+Windows 正式建置仍有 Rolldown 插件耗時、Nitro 模組解析與 Node DEP0155 棄用警告。本次乾淨安裝沒有 npm WARN，型別檢查、正式建置與桌機／手機頁面驗證皆已通過。
 
 ## 頁面路徑（Router Link）
 
@@ -106,14 +127,14 @@ content
 
 ## 使用的套件 & 工具
 
-- [Nuxt Content 3.9](https://content.nuxt.com/)
-- [Nuxt Google Fonts](https://google-fonts.nuxtjs.org/)
-- [Nuxt Tailwind 6.14](https://tailwindcss.nuxtjs.org/)
-- [Nuxt Google Tag 4.1](https://nuxt.com/modules/gtag/)
+- [Nuxt Content 3.16.1](https://content.nuxt.com/)
+- [Nuxt Fonts 0.14.0](https://fonts.nuxt.com/)
+- [Tailwind CSS 4.3.3](https://tailwindcss.com/)
+- [Nuxt Google Tag 5.0.0](https://nuxt.com/modules/gtag/)
 - [Nuxt Clarity Analytics](https://npm.im/nuxt-clarity-analytics)
-- [Nuxt AOS 1.2](https://nuxt.com/modules/aos)
-- [Vue Router 4.6.4](https://router.vuejs.org/)
-- [better-sqlite3 12.5](https://github.com/WiseLibs/better-sqlite3)
+- [Nuxt AOS 1.2.6](https://nuxt.com/modules/aos)
+- [Vue Router 5.3.1](https://router.vuejs.org/)
+- [better-sqlite3 13.0.3](https://github.com/WiseLibs/better-sqlite3)
 - [TinyPNG](https://tinypng.com/)
 - [ChatGPT o4-mini-high](https://openai.com/)
 
