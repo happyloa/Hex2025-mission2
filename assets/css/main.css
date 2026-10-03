@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+@layer base {
+  *,
+  ::before,
+  ::after,
+  ::backdrop {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
